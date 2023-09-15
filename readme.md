@@ -1,6 +1,6 @@
 # Helsinki e-commerce Music Store
 
-![Project Logo](./icons8-music-512.png)
+<img src="./icons8-music-512.png" alt="Project Logo" width="100" height="100">
 
 **An E-commerce Platform for Music and Instruments**
 
