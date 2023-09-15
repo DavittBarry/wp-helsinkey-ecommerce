@@ -1,4 +1,4 @@
-# 'Helsinkey', an e-commerce music store
+# 'Helsinkey'
 
 <img src="./icons8-music-512.png" alt="Project Logo" width="100" height="100">
 
@@ -11,10 +11,11 @@
 1. [About this project](#about-this-project)
 2. [Technology stack](#technology-stack)
 3. [Getting started with docker](#getting-started-with-docker)
-4. [Advanced Custom Fields](#advanced-custom-fields)
-5. [Contributing](#contributing)
-6. [Contact](#contact)
-7. [License](#license)
+4. [Installing and building Tailwind CSS](#installing-and-building-tailwind-css)
+5. [Advanced Custom Fields](#advanced-custom-fields)
+6. [Contributing](#contributing)
+7. [Contact](#contact)
+8. [License](#license)
 
 ---
 
@@ -30,6 +31,7 @@ For more about my work, visit my portfolio: [Davitt Portfolio](https://davittpor
 
 - Docker
 - PHP
+- Tailwind
 - WordPress with Advanced Custom Fields
 
 ---
@@ -40,6 +42,22 @@ For more about my work, visit my portfolio: [Davitt Portfolio](https://davittpor
 2. Clone this repository.
 3. Navigate to the project directory and run `docker-compose up`.
 4. Visit `http://localhost` in your browser.
+
+---
+
+## Installing and building Tailwind CSS
+
+To use Tailwind CSS in this project, follow these steps:
+
+1. Open a terminal and navigate to the theme's folder /wp-content/themes/helsinkey/.
+
+2. Install the packages:
+
+   npm install
+
+3. Run the build to generate the styles.css:
+
+   npm run build
 
 ---
 
