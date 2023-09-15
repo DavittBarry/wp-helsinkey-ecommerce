@@ -1,0 +1,38 @@
+# WordPress uploads
+/wp-content/uploads/
+
+# Cache and temporary files
+/wp-content/cache/
+/wp-content/upgrade/
+/wp-content/backup-db/
+/wp-content/debug.log
+
+# Environment-specific files
+.env
+.env.local
+
+# Docker-related files
+.docker/
+docker-compose.yml
+
+# Editor and IDE files
+.vscode/
+.idea/
+.phpstorm.meta.php
+
+# Node.js and npm files
+node_modules/
+
+# Composer files
+vendor/
+
+# Custom configuration files
+wp-config.php
+
+# Logs and backups
+/logs/
+/backup/
+
+# Other
+
+license.txt
