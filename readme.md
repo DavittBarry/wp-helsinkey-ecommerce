@@ -1,33 +1,32 @@
-# Helsinki e-commerce Music Store
+# 'Helsinkey', an e-commerce music store
 
 <img src="./icons8-music-512.png" alt="Project Logo" width="100" height="100">
 
-**An E-commerce Platform for Music and Instruments**
+**A WordPress e-commerce platform for music and instruments**
 
 ---
 
 ## Table of Contents
 
-1. [About This Project](#about-this-project)
-2. [Technology Stack](#technology-stack)
-3. [Getting Started with Docker](#getting-started-with-docker)
-4. [PHP Backend](#php-backend)
-5. [Advanced Custom Fields](#advanced-custom-fields)
-6. [Contributing](#contributing)
-7. [Contact](#contact)
-8. [License](#license)
+1. [About this project](#about-this-project)
+2. [Technology stack](#technology-stack)
+3. [Getting started with docker](#getting-started-with-docker)
+4. [Advanced Custom Fields](#advanced-custom-fields)
+5. [Contributing](#contributing)
+6. [Contact](#contact)
+7. [License](#license)
 
 ---
 
-## About This Project
+## About this project
 
-The Helsinki e-commerce Music Store is designed to provide a seamless shopping experience for music lovers and musicians. The platform offers a wide range of products, from digital music tracks to musical instruments.
+The Helsinkey e-commerce music store is designed to provide a seamless shopping experience for music lovers and musicians. The platform offers a wide range of products, from digital music tracks to musical instruments.
 
 For more about my work, visit my portfolio: [Davitt Portfolio](https://davittportfolio.com/)
 
 ---
 
-## Technology Stack
+## Technology stack
 
 - Docker
 - PHP
@@ -35,18 +34,12 @@ For more about my work, visit my portfolio: [Davitt Portfolio](https://davittpor
 
 ---
 
-## Getting Started with Docker
+## Getting started with docker
 
 1. Install Docker on your machine.
 2. Clone this repository.
 3. Navigate to the project directory and run `docker-compose up`.
 4. Visit `http://localhost` in your browser.
-
----
-
-## PHP Backend
-
-The backend of the Helsinki e-commerce Music Store is built using PHP. It handles everything from user authentication to product management.
 
 ---
 
