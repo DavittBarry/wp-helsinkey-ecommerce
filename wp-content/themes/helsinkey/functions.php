@@ -1,8 +1,18 @@
 <?php
+require_once get_template_directory() . '/class-wp-tailwind-navwalker.php';
+
 function enqueue_helsinkey_styles() {
-    wp_enqueue_style('helsinkey-style', get_template_directory_uri() . '/style.css', array(), '1.0.0');
+    wp_enqueue_style('helsinkey-tailwind', get_template_directory_uri() . '/dist/styles.css', array(), '1.0.0');
 }
 add_action('wp_enqueue_scripts', 'enqueue_helsinkey_styles');
+
+function helsinkey_add_menu_class($classes, $item, $args) {
+    if($args->theme_location === 'header-menu') {
+        $classes[] = 'text-sm px-3 inline-block';
+    }
+    return $classes;
+}
+add_filter('nav_menu_css_class', 'helsinkey_add_menu_class', 10, 3);
 
 function helsinkey_register_menus() {
     register_nav_menus(
@@ -31,4 +41,9 @@ add_action('wp_enqueue_scripts', 'helsinkey_enqueue_scripts');
 function helsinkey_customize_register($wp_customize) {
 }
 add_action('customize_register', 'helsinkey_customize_register');
-?>
+
+function add_google_fonts() {
+    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap', false);
+}
+
+add_action('wp_enqueue_scripts', 'add_google_fonts');

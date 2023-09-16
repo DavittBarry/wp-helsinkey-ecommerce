@@ -1,6 +1,6 @@
 # 'Helsinkey'
 
-<img src="./icons8-music-512.png" alt="Project Logo" width="100" height="100">
+<img src="./logo.png" alt="Project Logo" width="100" height="100">
 
 **A WordPress e-commerce platform for music and instruments**
 
