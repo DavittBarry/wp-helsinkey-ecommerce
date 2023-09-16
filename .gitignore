@@ -26,6 +26,7 @@ docker-compose.yml
 
 # Node.js and npm files
 node_modules/
+/wp-content/themes/helsinkey/node_modules/
 
 # Composer files
 vendor/
