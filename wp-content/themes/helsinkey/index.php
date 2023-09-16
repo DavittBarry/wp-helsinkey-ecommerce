@@ -1,19 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Helsinkey Theme</title>
-    <?php wp_head(); ?>
-</head>
-<body <?php body_class(); ?>>
-    
-    <div class="container mx-auto">
-        <h1 class="text-4xl text-center text-blue-500">Welcome to the Helsinkey Theme</h1>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Click Me
-        </button>
-    </div>
-    
-    <?php wp_footer(); ?>
-</body>
-</html>
+<?php get_header(); ?>
+
+<div class="container mx-auto">
+
+    <?php if ( have_posts() ) : ?>
+        <div class="posts">
+            <?php while ( have_posts() ) : the_post(); ?>
+                <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                    <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                    <div class="entry-content">
+                        <?php the_excerpt(); ?>
+                    </div>
+                </article>
+            <?php endwhile; ?>
+        </div>
+    <?php else : ?>
+        <p>No posts found.</p>
+    <?php endif; ?>
+
+</div>
+
+<?php get_footer(); ?>
