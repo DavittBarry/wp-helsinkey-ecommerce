@@ -8,7 +8,16 @@ module.exports = {
     node: true,
   },
   plugins: ['react', 'vue'],
-  extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:vue/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:vue/recommended',
+  ],
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   rules: {
   },
 };
