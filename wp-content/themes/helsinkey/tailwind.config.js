@@ -22,6 +22,9 @@ module.exports = {
         '72': '18rem',
         '80': '20rem',
       },
+      screens: {
+        '850px': '850px',
+      },
     },
   },
   plugins: [
