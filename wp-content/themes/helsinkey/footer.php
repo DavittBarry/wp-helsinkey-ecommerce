@@ -1,15 +1,28 @@
-<footer class=" bg-gray-900 text-white">
-    <div class="container mx-auto flex justify-between items-center py-4">
-        <nav>
-            <?php wp_nav_menu( array( 'theme_location' => 'footer-menu', 'container_class' => 'footer-menu-container' ) ); ?>
-        </nav>
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php bloginfo('name'); ?></title>
+    <?php wp_head(); ?>
+</head>
+<body <?php body_class(); ?> style="margin:0; padding:0; min-height:100vh; display:flex; flex-direction:column;">
 
-        <div class="text-sm">
-            &copy; <?php echo date( 'Y' ); ?> <?php bloginfo( 'name' ); ?>
+    <footer class="bg-gray-900 text-white md:text-sm" style="margin-top:auto;">
+        <div class="container mx-auto flex flex-col justify-between items-center py-4">
+            <nav class="text-center mb-4 w-full md:text-sm text-2xl">
+                <?php wp_nav_menu( array(
+                    'theme_location' => 'footer-menu',
+                    'container_class' => 'footer-menu-container flex flex-col w-full',
+                    'menu_class' => 'flex flex-col space-y-4 w-full'
+                )); ?>
+            </nav>
+
+            <div class="text-center w-full md:text-sm text-2xl">
+                &copy; <?php echo date( 'Y' ); ?> <?php bloginfo( 'name' ); ?>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
-<?php wp_footer(); ?>
+    <?php wp_footer(); ?>
 </body>
 </html>

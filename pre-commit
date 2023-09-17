@@ -1,0 +1,14 @@
+#!/bin/sh
+# This script runs ESLint on staged files before committing.
+
+staged_files=$(git diff --cached --name-only -- '*.js' '*.jsx' '*.ts' '*.tsx')
+
+if [ -n "$staged_files" ]; then
+    echo "Running ESLint on staged files..."
+    npx eslint $staged_files
+
+    if [ $? -ne 0 ]; then
+        echo "ESLint found issues in the staged files. Commit aborted."
+        exit 1
+    fi
+fi

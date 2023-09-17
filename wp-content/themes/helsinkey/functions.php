@@ -43,7 +43,13 @@ function helsinkey_customize_register($wp_customize) {
 add_action('customize_register', 'helsinkey_customize_register');
 
 function add_google_fonts() {
-    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap', false);
+
+    wp_register_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap', array(), null);
+
+    wp_enqueue_style('google-fonts');
 }
+
+add_action('wp_enqueue_scripts', 'add_google_fonts');
+
 
 add_action('wp_enqueue_scripts', 'add_google_fonts');

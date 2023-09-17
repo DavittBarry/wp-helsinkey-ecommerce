@@ -55,9 +55,9 @@ To use Tailwind CSS in this project, follow these steps:
 
    npm install
 
-3. Run the build to generate the styles.css:
+3. Run the build to generate all the styles.css and see updates live:
 
-   npm run build
+   npm run watch:all
 
 ---
 

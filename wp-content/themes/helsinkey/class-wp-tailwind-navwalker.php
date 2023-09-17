@@ -44,7 +44,7 @@ class Tailwind_Navwalker extends Walker_Nav_Menu {
         $permalink = $item->url;
 
         $output .= "<li class='mr-4 flex'>";
-        $output .= '<a class="text-white" href="' . $permalink . '">';
+        $output .= '<a class="text" href="' . $permalink . '">';
         $output .= $title;
         $output .= '</a>';
         $output .= '</li>';

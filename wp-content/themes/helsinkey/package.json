@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tailwindcss build -i ./src/styles.css -o ./style.css",
     "build:css": "postcss src/styles.css -o dist/styles.css",
-    "watch": "tailwindcss -i ./src/styles.css -o ./style.css --watch"
+    "watch:all": "npm-run-all --parallel watch:tailwind watch:css",
+    "watch:tailwind": "tailwindcss -i ./src/styles.css -o ./style.css --watch",
+    "watch:css": "npm run build:css --watch"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +21,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.15",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.29",
     "postcss-cli": "^10.1.0"
   }
