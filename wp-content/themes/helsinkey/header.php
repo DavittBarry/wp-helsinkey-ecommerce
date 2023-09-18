@@ -8,36 +8,39 @@
 </head>
 <body <?php body_class('bg-background text-text'); ?>>
 
-<header class="bg-helsinkey-blue shadow-header-shadow">
+<header class="bg-gray-900 shadow-header-shadow">
     <div class="container mx-auto flex flex-wrap items-center justify-between py-4">
 
         <!-- Desktop & Tablet View -->
         <div class="hidden 850px:flex items-center w-full justify-between flex-col md:flex-row">
-            <div class="flex items-center ml-2">
-                <!-- Desktop Logo -->
+            
+            <!-- Logo Section -->
+            <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center m-1 bg-gray-900 rounded p-1 hover:bg-hover-blue transition ease-in-out duration-200">
                 <img src="/logo.png" alt="Logo" style="height: 60px; width: 60px;">
-                <div class="text-lg md:text-2xl font-semibold ml-2">
-                    <a href="<?php echo esc_url(home_url('/')); ?>" class="text">Helsinkey</a>
+                <div class="text-lg md:text-2xl font-semibold">
+                    <span class="text">Helsinkey</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="flex flex-col md:flex-row items-center mt-4 md:mt-0">
-                <!-- Desktop & Tablet Menu -->
-                <nav class="flex space-x-4 items-center mb-4 md:mb-0">
-                    <?php wp_nav_menu(array(
-                        'theme_location' => 'header-menu',
-                        'container_class' => 'header-menu-container',
-                        'menu_class' => 'flex space-x-4'
-                    )); ?>
-                </nav>
+            <!-- Navigation Menu -->
+            <nav class="flex space-x-4 items-center mb-4 md:mb-0">
+                <?php wp_nav_menu(array(
+                    'theme_location' => 'header-menu',
+                    'container_class' => 'header-menu-container',
+                    'menu_class' => 'flex space-x-4',
+                    'link_before' => '<div class="rounded p-1 hover:bg-hover-blue transition ease-in-out duration-200">',
+                    'link_after' => '</div>'
+                )); ?>
+            </nav>
 
-                <!-- Login/Register for Desktop & Tablet -->
-                <div class="flex text-base md:text-lg items-center">
-                    <a href="<?php echo wp_login_url(); ?>" class="px-3">Kirjaudu</a> |
-                    <a href="<?php echo wp_registration_url(); ?>" class="px-3">Rekisteröidy</a>
-                </div>
+            <!-- Login/Register Buttons -->
+            <div class="flex flex-col text-base md:text-lg items-center">
+                <a href="<?php echo wp_login_url(); ?>" class="bg-gray-800 rounded p-1 w-full text-center hover:bg-hover-blue transition ease-in-out duration-200">Kirjaudu</a>
+                <div class="border-t border-gray-400 w-full my-1"></div>
+                <a href="<?php echo wp_registration_url(); ?>" class="bg-gray-800 rounded p-1 w-full text-center hover:bg-hover-blue transition ease-in-out duration-200">Rekisteröidy</a>
             </div>
         </div>
+</div>
 
         <!-- Mobile View -->
         <div x-data="{ open: false }" class="850px:hidden flex items-center justify-between w-full relative pr-4 pl-4">
@@ -62,7 +65,7 @@
                     'menu_class' => 'flex flex-col space-y-2 p-4 text-2xl'
                 )); ?>
                 <div class="text text-2xl p-4">
-                    <a href="<?php echo wp_login_url(); ?>" class="px-3">Kirjaudu</a> |
+                    <a href="<?php echo wp_login_url(); ?>" class="px-3">Kirjaudu</a>
                     <a href="<?php echo wp_registration_url(); ?>" class="px-3">Rekisteröidy</a>
                 </div>
             </nav>

@@ -11,6 +11,7 @@ module.exports = {
         'helsinkey-blue': '#0D5A8A',
         'background': '#1a202c',
         'text': '#c0ced5',
+        'hover-blue': '#0B4F7C',
       },
       fontFamily: {
         'sans': ['Raleway'],
