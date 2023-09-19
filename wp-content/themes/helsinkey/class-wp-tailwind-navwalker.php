@@ -1,42 +1,64 @@
 <?php
 /**
  * Custom walker class for Tailwind CSS.
+ *
+ * PHP version 7
+ *
+ * @category WordPress
+ * @package  Helsinkey
+ * @author   Display Name <username@example.com>
+ * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
+ * @link     http://example.com/
  */
 
-class Tailwind_Navwalker extends Walker_Nav_Menu {
-    
+class Tailwind_Navwalker extends Walker_Nav_Menu
+{
     /**
      * Starts the list before the elements are added.
      *
-     * @param string $output Passed by reference. Used to append additional content.
-     * @param int    $depth  Depth of menu item. Used for padding.
-     * @param array  $args   An array of arguments. @see wp_nav_menu()
+     * @param string $output Used to append additional content.
+     * @param int    $depth  Depth of menu item.
+     * @param array  $args   An array of arguments.
+     *
+     * @return void
      */
-    public function start_lvl( &$output, $depth = 0, $args = array() ) {
+    public function startLvl(&$output, $depth = 0, $args = array())
+    {
         $output .= '<ul class="flex">';
     }
 
     /**
-     * Ends the list of after the elements are added.
+     * Ends the list after the elements are added.
      *
-     * @param string $output Passed by reference. Used to append additional content.
-     * @param int    $depth  Depth of menu item. Used for padding.
-     * @param array  $args   An array of arguments. @see wp_nav_menu()
+     * @param string $output Used to append additional content.
+     * @param int    $depth  Depth of menu item.
+     * @param array  $args   An array of arguments.
+     *
+     * @return void
      */
-    public function end_lvl( &$output, $depth = 0, $args = array() ) {
+    public function endLvl(&$output, $depth = 0, $args = array())
+    {
         $output .= '</ul>';
     }
 
     /**
-     * Start the element output.
+     * Starts the element output.
      *
-     * @param string $output Passed by reference. Used to append additional content.
+     * @param string $output Used to append additional content.
      * @param object $item   Menu item data object.
-     * @param int    $depth  Depth of menu item. Used for padding.
-     * @param array  $args   An array of arguments. @see wp_nav_menu()
+     * @param int    $depth  Depth of menu item.
+     * @param array  $args   An array of arguments.
      * @param int    $id     Current item ID.
+     *
+     * @return void
      */
-    public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+    public function startEl(
+        &$output,
+        $item,
+        $depth = 0,
+        $args = array(),
+        $id = 0
+    ) {
         $object = $item->object;
         $type = $item->type;
         $title = $item->title;

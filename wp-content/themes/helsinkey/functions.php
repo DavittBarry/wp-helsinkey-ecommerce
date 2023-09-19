@@ -14,6 +14,17 @@ function helsinkey_add_menu_class($classes, $item, $args) {
 }
 add_filter('nav_menu_css_class', 'helsinkey_add_menu_class', 10, 3);
 
+add_action(
+    'save_post', 'set_front_page_template_automatically'
+);
+
+function set_front_page_template_automatically($post_id) {
+    if (get_post($post_id)->post_title === 'Etusivu') {
+        update_post_meta($post_id, '_wp_page_template', 'template-front-page.php');
+    }
+}
+
+
 function helsinkey_register_menus() {
     register_nav_menus(
         array(

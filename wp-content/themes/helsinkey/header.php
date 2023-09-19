@@ -12,10 +12,10 @@
     <div class="container mx-auto flex flex-wrap items-center justify-between py-4">
 
         <!-- Desktop & Tablet View -->
-        <div class="hidden 850px:flex items-center w-full justify-between flex-col md:flex-row">
+        <div class="hidden md:flex items-center w-full justify-between flex-col md:flex-row">
             
             <!-- Logo Section -->
-            <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center m-1 bg-gray-900 rounded p-1 hover:bg-hover-blue transition ease-in-out duration-200">
+            <a href="<?php echo esc_url(home_url('/')); ?>" class="flex items-center m-2 bg-gray-900 rounded p-1 hover:bg-gray-800 transition ease-in-out duration-200">
                 <img src="/logo.png" alt="Logo" style="height: 60px; width: 60px;">
                 <div class="text-lg md:text-2xl font-semibold">
                     <span class="text">Helsinkey</span>
@@ -27,23 +27,22 @@
                 <?php wp_nav_menu(array(
                     'theme_location' => 'header-menu',
                     'container_class' => 'header-menu-container',
-                    'menu_class' => 'flex space-x-4',
+                    'menu_class' => 'flex space-x-1',
                     'link_before' => '<div class="rounded p-1 hover:bg-hover-blue transition ease-in-out duration-200">',
                     'link_after' => '</div>'
                 )); ?>
             </nav>
 
             <!-- Login/Register Buttons -->
-            <div class="flex flex-col text-base md:text-lg items-center">
+            <div class="flex flex-col text-base md:m-2 md:text-lg items-center">
                 <a href="<?php echo wp_login_url(); ?>" class="bg-gray-800 rounded p-1 w-full text-center hover:bg-hover-blue transition ease-in-out duration-200">Kirjaudu</a>
                 <div class="border-t border-gray-400 w-full my-1"></div>
                 <a href="<?php echo wp_registration_url(); ?>" class="bg-gray-800 rounded p-1 w-full text-center hover:bg-hover-blue transition ease-in-out duration-200">Rekisteröidy</a>
             </div>
         </div>
-</div>
 
         <!-- Mobile View -->
-        <div x-data="{ open: false }" class="850px:hidden flex items-center justify-between w-full relative pr-4 pl-4">
+        <div x-data="{ open: false }" class="md:hidden flex items-center justify-between w-full relative pr-4 pl-4 mb-1.5">
             <!-- Mobile Logo -->
             <img src="/logo.png" alt="Logo" style="height: 60px; width: 60px;">
             <!-- Mobile Text -->
@@ -58,15 +57,18 @@
                 </button>
             </div>
             <!-- Mobile Menu -->
-            <nav x-show="open" x-cloak class="absolute w-full top-16 left-0 z-50 flex flex-col space-y-2 bg-helsinkey-blue text-2xl">
+            <nav x-show="open" x-cloak class="absolute w-full top-[5.1rem] left-0 z-50 flex flex-col space-y-2 bg-gray-800 text-2xl">
                 <?php wp_nav_menu(array(
                     'theme_location' => 'header-menu',
                     'container_class' => 'header-menu-container',
-                    'menu_class' => 'flex flex-col space-y-2 p-4 text-2xl'
+                    'menu_class' => 'flex flex-col space-y-2 p-4 text-2xl justify-center items-center',
+                    'link_before' => '<div class="rounded p-1 hover:bg-hover-blue text-2xl transition ease-in-out duration-200">',
+                    'link_after' => '</div>'
                 )); ?>
-                <div class="text text-2xl p-4">
-                    <a href="<?php echo wp_login_url(); ?>" class="px-3">Kirjaudu</a>
-                    <a href="<?php echo wp_registration_url(); ?>" class="px-3">Rekisteröidy</a>
+                <div class="flex justify-center items-center text-2xl p-4">
+                    <a href="<?php echo wp_login_url(); ?>" class="flex-1 bg-gray-700 rounded p-1 text-center hover:bg-hover-blue transition ease-in-out duration-200">Kirjaudu</a>
+                    <div class="border-l border-gray-400 h-6 mx-2"></div>
+                    <a href="<?php echo wp_registration_url(); ?>" class="flex-1 bg-gray-700 rounded p-1 text-center hover:bg-hover-blue transition ease-in-out duration-200">Rekisteröidy</a>
                 </div>
             </nav>
         </div>
