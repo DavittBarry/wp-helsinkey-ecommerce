@@ -51,22 +51,6 @@ function Helsinkey_Add_Menu_class($classes, $item, $args)
 add_filter('nav_menu_css_class', 'Helsinkey_Add_Menu_Class', 10, 3);
 
 /**
- * Set front page template automatically.
- *
- * @param int $post_id Post ID.
- *
- * @return void
- */
-function Helsinkey_Set_Front_Page_template($post_id)
-{
-    if (get_post($post_id)->post_title === 'Etusivu') {
-        update_post_meta($post_id, '_wp_page_template', 'template-front-page.php');
-    }
-}
-
-add_action('save_post', 'Helsinkey_Set_Front_Page_Template');
-
-/**
  * Register menus.
  *
  * @return void

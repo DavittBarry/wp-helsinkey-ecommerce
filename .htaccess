@@ -7,3 +7,8 @@
 # Any changes to the directives between these markers will be overwritten.
 
 # END WordPress
+
+# Increase Max Upload Size
+
+php_value upload_max_filesize 64M
+php_value post_max_size 64M
