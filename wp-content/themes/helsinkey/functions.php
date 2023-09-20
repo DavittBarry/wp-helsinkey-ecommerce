@@ -87,6 +87,15 @@ function Helsinkey_Theme_setup()
 
 add_action('after_setup_theme', 'Helsinkey_Theme_Setup');
 
+function custom_woocommerce_quantity_input_args($args, $product) {
+    $args['input_attrs'] = array(
+        'style' => 'color: black; background-color: white;'
+    );
+    return $args;
+}
+add_filter('woocommerce_quantity_input_args', 'custom_woocommerce_quantity_input_args', 10, 2);
+
+
 /**
  * Enqueue scripts.
  *
@@ -126,16 +135,19 @@ add_action('wp_enqueue_scripts', 'Helsinkey_Add_Google_Fonts');
 function load_single_template($template) {
     global $post;
 
-    if ($post->post_type === 'post') {
+    if ($post->post_type === 'blog') {
         return locate_template('single-blog.php');
     } elseif ($post->post_type === 'events') {
         return locate_template('single-events.php');
+    } elseif ($post->post_type === 'product') {
+        return locate_template('single-product.php');
     }
 
     return $template;
 }
 
 add_filter('single_template', 'load_single_template');
+
 
 
 function create_event_post_type() {

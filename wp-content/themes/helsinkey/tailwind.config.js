@@ -10,7 +10,7 @@ module.exports = {
       colors: {
         'helsinkey-blue': '#0D5A8A',
         'background': '#1a202c',
-        'text': '#c0ced5',
+        'text': '#FFFFFF',
         'hover-blue': '#0B4F7C',
       },
       fontFamily: {

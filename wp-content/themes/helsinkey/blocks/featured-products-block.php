@@ -60,9 +60,9 @@
                             text-white
                             text-md
                             md:text-lg
-                            px-3
-                            md:px-3
-                            py-3
+                            px-2
+                            md:px2
+                            py-2
                             rounded-xl"><?php echo
                             get_woocommerce_currency_symbol() 
                             . get_post_meta(get_the_ID(), '_price', true); 
