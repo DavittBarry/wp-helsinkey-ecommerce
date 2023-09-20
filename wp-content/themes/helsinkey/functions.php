@@ -50,6 +50,12 @@ function Helsinkey_Add_Menu_class($classes, $item, $args)
 
 add_filter('nav_menu_css_class', 'Helsinkey_Add_Menu_Class', 10, 3);
 
+function my_custom_image_sizes() {
+    add_image_size('my_custom_size', 600, 400, true);
+}
+add_action('after_setup_theme', 'my_custom_image_sizes');
+
+
 /**
  * Register menus.
  *
@@ -116,3 +122,36 @@ function Helsinkey_Add_Google_fonts()
 }
 
 add_action('wp_enqueue_scripts', 'Helsinkey_Add_Google_Fonts');
+
+function load_single_template($template) {
+    global $post;
+
+    if ($post->post_type === 'post') {
+        return locate_template('single-blog.php');
+    } elseif ($post->post_type === 'events') {
+        return locate_template('single-events.php');
+    }
+
+    return $template;
+}
+
+add_filter('single_template', 'load_single_template');
+
+
+function create_event_post_type() {
+    register_post_type('events',
+        array(
+            'labels' => array(
+                'name' => __('Events'),
+                'singular_name' => __('Event')
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'rewrite' => array('slug' => 'events'),
+            'show_in_rest' => true,
+            'supports' => array('title', 'editor', 'thumbnail', 'excerpt')
+        )
+    );
+}
+add_action('init', 'create_event_post_type');
+

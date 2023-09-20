@@ -33,7 +33,10 @@
                         mb-2
                         md:mb-4
                         rounded" src="
-                        <?php echo get_the_post_thumbnail_url(); ?>" alt="
+                        <?php echo
+                        get_the_post_thumbnail_url($post, 'my_custom_size');
+                        ?>
+                        " alt="
                         <?php the_title(); ?>
                         ">
                         <h3 class=
@@ -55,11 +58,11 @@
                             <p class=
                             "bg-gray-800
                             text-white
-                            text-xs
-                            md:text-sm
-                            px-2
-                            md:px-2
-                            py-2
+                            text-md
+                            md:text-lg
+                            px-3
+                            md:px-3
+                            py-3
                             rounded-xl"><?php echo
                             get_woocommerce_currency_symbol() 
                             . get_post_meta(get_the_ID(), '_price', true); 
@@ -74,8 +77,7 @@
                             md:px-4
                             py-2
                             rounded-xl
-                            transition-colors hover:bg-blue-600">
-                            Näytä tuote</a>
+                            transition-colors hover:bg-blue-600">Näytä tuote</a>
                         </div>
                     </div>
                 <?php endforeach; ?>
