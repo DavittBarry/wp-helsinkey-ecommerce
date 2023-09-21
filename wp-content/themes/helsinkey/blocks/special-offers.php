@@ -21,7 +21,7 @@
                 <div class="special-offer-item">
                     <h3><?php the_title(); ?></h3>
                     <p><?php the_excerpt(); ?></p>
-                    <a href="<?php the_permalink(); ?>">Read More</a>
+                    <a href="<?php the_permalink(); ?>">Lue lisää</a>
                 </div>
             <?php endwhile; 
             wp_reset_postdata();

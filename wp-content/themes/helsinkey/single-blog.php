@@ -1,51 +1,169 @@
 <?php get_header(); ?>
 
-<div class="container mx-auto px-4 py-6 md:py-12">
+<div class="container mx-auto px-4 py-6 md:py-12 flex flex-col items-center">
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
         <article class="bg-gray-900 p-4 rounded-lg shadow-lg flex flex-col">
-            <!-- Blog Thumbnail -->
             <img class="w-full h-48 md:h-56 object-cover mb-4 rounded-t-lg" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
-
-            <!-- Blog Title -->
             <h1 class="text-2xl md:text-3xl font-bold mb-2 text-white"><?php the_title(); ?></h1>
-
-            <!-- Blog Metadata -->
             <div class="text-sm text-gray-300 mb-4">
                 Kirjoittanut <?php the_author(); ?> <?php echo get_the_date(); ?>
             </div>
-
-            <!-- Blog Content -->
             <div class="flex-grow text-white prose lg:prose-lg">
                 <?php the_content(); ?>
             </div>
         </article>
 
         <!-- Comments Section -->
-        <section class="mt-6 bg-gray-900 p-4 rounded-lg">
-            <?php if (comments_open() || get_comments_number()) : ?>
-                <div class="mb-4">
-                    <h2 class="text-xl font-bold text-white">Kommentit</h2>
-                </div>
-                <div class="space-y-4">
-                    <?php 
-                        $comments_args = array(
-                            'comment_field' => '<div class="mb-4"><label class="block text-gray-300" for="comment">' . _x('Comment', 'noun') . '</label><textarea id="comment" name="comment" class="w-full p-2 rounded bg-gray-700 text-white" aria-required="true"></textarea></div>',
-                            'fields' => array(
-                                'author' => '<div class="mb-4"><label class="block text-gray-300" for="author">Nimi</label><input id="author" name="author" type="text" class="w-full p-2 rounded bg-gray-700 text-white"></div>',
-                                'email' => '<div class="mb-4"><label class="block text-gray-300" for="email">Sähköposti</label><input id="email" name="email" type="text" class="w-full p-2 rounded bg-gray-700 text-white"></div>',
-                            ),
-                            'class_submit' => 'bg-helsinkey-blue text-white px-4 py-2 rounded hover:bg-blue-600',
-                            'label_submit' => 'Lähetä kommentti',
-                        );
-                        comment_form($comments_args);
-                    ?>
-                </div>
-            <?php else : ?>
-                <div class="text-white">
-                    Kommentit on suljettu.
-                </div>
-            <?php endif; ?>
+        <section class="mt-6 bg-gray-900 p-4 rounded-lg w-full text-center">
+            <div class="mb-4">
+                <h2 class="text-xl font-bold text-white mb-2">Kommentit</h2>
+            </div>
+            <?php 
+                if ( comments_open() || get_comments_number() ) :
+                    comments_template();
+                endif;
+            ?>
         </section>
+
+        <style>
+            /* Custom styles for comment section links */
+            .comment-respond a, .comment-list a {
+                color: #63b3ed;
+                text-decoration: underline;
+            }
+
+            .comment-respond a:hover, .comment-list a:hover {
+                text-decoration: none;
+            }
+
+            /* Comment list styles */
+            .comment-list {
+                list-style: none;
+                padding-left: 0;
+            }
+
+            /* Style to put the avatar and metadata inline */
+            .comment-author .avatar, .comment-author, .comment-metadata {
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 10px;
+            }
+
+            .comment-author {
+                font-weight: bold;
+                color: #ffffff;
+            }
+
+            .comment-metadata {
+                font-size: 12px;
+                color: #aaaaaa;
+            }
+
+            /* Comment reply link styling */
+            .comment-reply-link {
+                background: #63b3ed;
+                color: white;
+                padding: 5px 10px;
+                border-radius: 3px;
+                font-size: 12px;
+            }
+
+            .comment-reply-link:after {
+                content: none;
+            }
+
+            /* Comment form styles */
+            .comment-form label {
+                color: #ffffff;
+            }
+
+            .comment-form input, .comment-form textarea {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 8px;
+                border-radius: 10px;
+                background: #333;
+                color: #fff;
+            }
+
+            .comment-form input[type="submit"] {
+                background: #63b3ed;
+                color: white;
+                cursor: pointer;
+            }
+
+            /* Hide default checkbox */
+            input#wp-comment-cookies-consent {
+                display: none;
+            }
+
+            /* Custom checkbox design */
+            input#wp-comment-cookies-consent + label {
+                position: relative;
+                padding-left: 30px;
+                cursor: pointer;
+                color: #fff;
+            }
+
+            input#wp-comment-cookies-consent + label:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 20px;
+                height: 20px;
+                border: 2px solid #fff;
+                border-radius: 3px;
+            }
+
+            /* Show a checkmark when checked */
+            input#wp-comment-cookies-consent:checked + label:after {
+                content: "";
+                position: absolute;
+                left: 5px;
+                top: 2px;
+                width: 10px;
+                height: 15px;
+                border: solid #fff;
+                border-width: 0 2px 2px 0;
+                transform: rotate(45deg);
+            }
+
+            h3#reply-title {
+                display: none;
+            }
+
+            /* Comment box  */
+            .comment-content {
+                display: inline-block;
+                max-width: 100%;
+                word-wrap: break-word;
+                background-color: #2d2d2d;
+                padding: 10px;
+                border-radius: 5px;
+                margin-top: 5px;
+                position: relative;
+            }
+
+            /* Adding quotes around the comment */
+            .comment-content::before, .comment-content::after {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 24px;
+                color: #fff;
+            }
+            
+            .comment-content::before {
+                content: "“";
+                left: 0px;
+            }
+            
+            .comment-content::after {
+                content: "”";
+                right: 0px;
+            }
+        </style>
 
         <!-- Back to All Blogs -->
         <div class="mt-6 text-center">

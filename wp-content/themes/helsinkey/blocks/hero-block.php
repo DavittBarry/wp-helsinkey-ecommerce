@@ -36,7 +36,7 @@ if ($hero_image) :
             text-c0ced5">
                 <?php echo esc_html($hero_headline); ?>
             </h1>
-            <p class="text-xl md:text-2xl lg:text-xl xl:text-2xl text-c0ced5">
+            <p class="text-xl  md:text-2xl lg:text-xl xl:text-2xl text-c0ced5">
                 <?php echo esc_html($hero_subheadline); ?>
             </p>
         </div>

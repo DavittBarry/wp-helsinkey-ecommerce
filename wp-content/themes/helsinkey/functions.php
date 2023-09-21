@@ -135,7 +135,7 @@ add_action('wp_enqueue_scripts', 'Helsinkey_Add_Google_Fonts');
 function load_single_template($template) {
     global $post;
 
-    if ($post->post_type === 'blog') {
+    if ($post->post_type === 'post') {
         return locate_template('single-blog.php');
     } elseif ($post->post_type === 'events') {
         return locate_template('single-events.php');

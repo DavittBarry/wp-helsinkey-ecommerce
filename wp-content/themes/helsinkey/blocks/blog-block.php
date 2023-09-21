@@ -19,7 +19,7 @@
                     ?>
                     <div class="blog-item bg-gray-900 p-2 md:p-4 rounded shadow-lg flex flex-col <?php echo ($post_count === 3) ? 'hidden lg:block' : ''; ?>">
                         <!-- Blog Thumbnail -->
-                        <img class="w-full h-36 md:h-48 object-cover mb-2 md:mb-4 rounded" src="<?php echo get_the_post_thumbnail_url($post, array(600, 400)); ?>" alt="<?php the_title(); ?>">
+                        <img class="w-full h-36 md:h-48 object-cover mb-2 md:mb-4 rounded" src="<?php echo get_the_post_thumbnail_url($post, 'my_custom_size'); ?>" alt="<?php the_title(); ?>">
                         
                         <!-- Blog Title -->
                         <a href="<?php the_permalink(); ?>">
