@@ -51,7 +51,7 @@ function Helsinkey_Add_Menu_class($classes, $item, $args)
 add_filter('nav_menu_css_class', 'Helsinkey_Add_Menu_Class', 10, 3);
 
 function my_custom_image_sizes() {
-    add_image_size('my_custom_size', 600, 400, true);
+    add_image_size('my_custom_size', 700, 500, true);
 }
 add_action('after_setup_theme', 'my_custom_image_sizes');
 
@@ -148,8 +148,6 @@ function load_single_template($template) {
 
 add_filter('single_template', 'load_single_template');
 
-
-
 function create_event_post_type() {
     register_post_type('events',
         array(
@@ -161,9 +159,8 @@ function create_event_post_type() {
             'has_archive' => true,
             'rewrite' => array('slug' => 'events'),
             'show_in_rest' => true,
-            'supports' => array('title', 'editor', 'thumbnail', 'excerpt')
+            'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments')
         )
     );
 }
 add_action('init', 'create_event_post_type');
-

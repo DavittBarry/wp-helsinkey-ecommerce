@@ -1,45 +1,22 @@
+<?php die('taxonomy-product_cat.php loaded'); ?>
+
 <?php
-/**
- * Template Name: Soittimet Page
- */
-get_header(); ?>
+get_header();
+?>
+
 
 <div class="container mx-auto mt-3 md:mt-3">
     <!-- Products Section -->
-    <div class="special-offers-section py-6 md:py-6">
+    <div class="special-offers-section py-6 md:py-12">
         <h2 class="text-2xl md:text-3xl font-semibold mb-4 md:mb-6 text-center">
-            Soittimet
+            <?php single_term_title(); ?>
         </h2>
-
-        <?php /* <!-- Instrument Categories Section -->
-        <div class="instrument-categories text-center mb-8">
-            <div class="flex flex-no-wrap justify-center items-center overflow-x-auto"> */ ?>
-                <!-- <?php
-                /*$terms = get_terms([
-                    'taxonomy' => 'product_cat',
-                    'hide_empty' => true,
-                ]);
-
-                foreach ($terms as $term) { */ ?>
-                    <a href="<?php //echo get_term_link($term->term_id); ?>" class="category-item bg-gray-900 rounded-lg p-4 m-2 text-white hover:bg-helsinkey-blue transition-colors duration-300">
-                        <?php //echo $term->name; ?>
-                    </a>
-                <?php
-                /* } */ ?>
-            </div>
-        </div> -->
-        <?php /* */ ?>
-
+        
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             <?php
-            $args = array(
-                'post_type' => 'product',
-                'posts_per_page' => -1
-            );
-            $product_query = new WP_Query($args);
-            if ($product_query->have_posts()) :
-                while ($product_query->have_posts()) :
-                    $product_query->the_post();
+            if (have_posts()) :
+                while (have_posts()) :
+                    the_post();
             ?>
                 <div class="special-offer-item bg-gray-900 p-4 rounded-lg shadow-lg flex flex-col">
                     <!-- Product Thumbnail -->
@@ -72,6 +49,8 @@ get_header(); ?>
             <?php
                 endwhile;
                 wp_reset_postdata();
+            else :
+                echo '<p>No products found for this category.</p>';
             endif;
             ?>
         </div>

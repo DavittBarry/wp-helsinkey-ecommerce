@@ -1,11 +1,11 @@
 <?php get_header(); ?>
 
-<div class="container mx-auto px-4 py-6 md:py-12 flex flex-col items-center">
+<div class="container mx-auto px-4 py-6 md:py-20 flex flex-col items-center">
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-        <article class="bg-gray-900 p-4 rounded-lg shadow-lg flex flex-col">
-            <img class="w-full h-48 md:h-56 object-cover mb-4 rounded-t-lg" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>">
-            <h1 class="text-2xl md:text-3xl font-bold mb-2 text-white"><?php the_title(); ?></h1>
-            <div class="text-sm text-gray-300 mb-4">
+        <article class="bg-gray-900 p-4 rounded-lg shadow-lg flex flex-col w-full max-w-3xl">
+            <img class="w-full h-48 md:h-56 object-cover mb-4 rounded-t-lg" src="<?php echo get_the_post_thumbnail_url($post, 'my_custom_size'); ?>" alt="<?php the_title(); ?>">
+            <h1 class="text-2xl md:text-3xl font-bold mb-2 text-white text-center"><?php the_title(); ?></h1>
+            <div class="text-sm text-gray-300 mb-4 text-center">
                 Kirjoittanut <?php the_author(); ?> <?php echo get_the_date(); ?>
             </div>
             <div class="flex-grow text-white prose lg:prose-lg">
@@ -14,7 +14,7 @@
         </article>
 
         <!-- Comments Section -->
-        <section class="mt-6 bg-gray-900 p-4 rounded-lg w-full text-center">
+        <section class="mt-6 bg-gray-900 p-4 rounded-lg shadow-lg w-full max-w-3xl text-center">
             <div class="mb-4">
                 <h2 class="text-xl font-bold text-white mb-2">Kommentit</h2>
             </div>
@@ -46,6 +46,7 @@
             .comment-author .avatar, .comment-author, .comment-metadata {
                 display: inline-block;
                 vertical-align: middle;
+                margin: 6px;
                 margin-right: 10px;
             }
 
@@ -66,6 +67,11 @@
                 padding: 5px 10px;
                 border-radius: 3px;
                 font-size: 12px;
+                transition: background-color 0.3s ease;
+            }
+
+            .comment-reply-link:hover {
+                background-color: #4a90e2;
             }
 
             .comment-reply-link:after {
@@ -90,6 +96,11 @@
                 background: #63b3ed;
                 color: white;
                 cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .comment-form input[type="submit"]:hover {
+                background-color: #4a90e2;
             }
 
             /* Hide default checkbox */
@@ -110,8 +121,8 @@
                 position: absolute;
                 left: 0;
                 top: 0;
-                width: 20px;
-                height: 20px;
+                width: 25px;
+                height: 25px;
                 border: 2px solid #fff;
                 border-radius: 3px;
             }
@@ -120,10 +131,10 @@
             input#wp-comment-cookies-consent:checked + label:after {
                 content: "";
                 position: absolute;
-                left: 5px;
-                top: 2px;
-                width: 10px;
-                height: 15px;
+                left: 8px;
+                top: 4px;
+                width: 8px;
+                height: 12px;
                 border: solid #fff;
                 border-width: 0 2px 2px 0;
                 transform: rotate(45deg);
@@ -141,11 +152,19 @@
                 background-color: #2d2d2d;
                 padding: 10px;
                 border-radius: 5px;
+                
+                margin-bottom: 12px;
                 margin-top: 5px;
                 position: relative;
             }
 
-            /* Adding quotes around the comment */
+            .comment-notes {
+                margin-top: 12px;
+            }
+
+            .logged-in-as {
+                margin-top: 8px;
+            }
             .comment-content::before, .comment-content::after {
                 position: absolute;
                 top: 50%;

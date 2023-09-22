@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
-<div class="container mx-auto px-4 py-6 md:py-12 flex justify-center"> <!-- Added flex and justify-center here -->
-    <div class="w-full md:w-2/3 lg:w-1/2">
+<div class="container mx-auto px-4 py-6 md:py-20 flex flex-col items-center">
+    <div class="bg-gray-900 p-4 rounded-lg shadow-lg flex flex-col w-full max-w-3xl">
         <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
             <article class="bg-gray-900 p-4 rounded-lg shadow-lg flex flex-col items-center">
 
@@ -35,9 +35,13 @@
                     color: white !important;
                 }
 
-                /* For the Related products header */
                 .related.products h2 {
                     color: white !important;
+                }
+                
+                .product_meta {
+                    
+                    display: none !important;
                 }
 
                 /* Tags and Categories */
@@ -47,9 +51,11 @@
                     border-radius: 12px;
                     padding: 5px;
                     transition: ease-in-out 0.2s;
+                    display: none !important;
                 }
                 .tagcloud a:hover, .product_meta .posted_in a:hover, .product_meta .tagged_as a:hover {
                     background-color: #4299E1 !important;
+                    display: none !important;
                 }
             </style>
 
