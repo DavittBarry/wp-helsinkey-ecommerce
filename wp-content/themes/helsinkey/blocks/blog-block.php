@@ -23,7 +23,7 @@
                         
                         <!-- Blog Title -->
                         <a href="<?php the_permalink(); ?>">
-                            <h3 class="text-lg md:text-xl font-bold mb-1 md:mb-2 text-white"><?php the_title(); ?></h3>
+                            <h3 class="text-lg md:text-xl font-bold mb-1 md:mb-2 text-white text-center"><?php the_title(); ?></h3>
                         </a>
                         
                         <!-- Blog Excerpt -->

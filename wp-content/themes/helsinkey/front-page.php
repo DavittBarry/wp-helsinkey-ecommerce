@@ -20,9 +20,7 @@ get_header();
 <?php get_template_part('blocks/blog-block'); ?>
 <?php get_template_part('blocks/upcoming-events-block'); ?>
 <?php get_template_part('blocks/featured-artists'); ?>
-<?php get_template_part('blocks/special-offers'); ?>
 <?php get_template_part('blocks/social-media'); ?>
-<?php get_template_part('blocks/faq-block'); ?>
 <?php get_template_part('blocks/contact-block'); ?>
 
 <?php

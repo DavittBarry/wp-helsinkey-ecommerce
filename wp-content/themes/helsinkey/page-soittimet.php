@@ -46,7 +46,7 @@ get_header(); ?>
                     <img class="w-full h-36 md:h-48 object-cover mb-2 md:mb-4 rounded" src="<?php echo get_the_post_thumbnail_url($post, array(600, 400)); ?>" alt="<?php the_title(); ?>">
                     
                     <!-- Product Title -->
-                    <h3 class="text-lg md:text-xl font-bold mb-2 text-white">
+                    <h3 class="text-lg md:text-xl font-bold mb-2 text-white text-center">
                         <a href="<?php the_permalink(); ?>">
                             <?php the_title(); ?>
                         </a>

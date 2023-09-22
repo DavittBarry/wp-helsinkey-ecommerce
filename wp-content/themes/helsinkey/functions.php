@@ -164,3 +164,21 @@ function create_event_post_type() {
     );
 }
 add_action('init', 'create_event_post_type');
+
+function create_artists_post_type() {
+    register_post_type('artists',
+        array(
+            'labels' => array(
+                'name' => __('Artists'),
+                'singular_name' => __('Artist')
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'rewrite' => array('slug' => 'artists'),
+            'show_in_rest' => true,
+            'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments')
+        )
+    );
+}
+
+add_action('init', 'create_artists_post_type');

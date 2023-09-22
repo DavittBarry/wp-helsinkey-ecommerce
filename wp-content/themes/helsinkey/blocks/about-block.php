@@ -10,7 +10,7 @@
     }
 </style>
 
-<div class="about-site py-6 md:py-12">
+<div class="about-site py-3 md:py-3">
     <div class="container mx-auto about-container" style="max-width: 800px; margin-left: auto; margin-right: auto;">
         <h2 class="text-2xl md:text-3xl font-semibold mb-4 m-6 md:mb-6 text-center">
             Tietoja tästä sivustosta

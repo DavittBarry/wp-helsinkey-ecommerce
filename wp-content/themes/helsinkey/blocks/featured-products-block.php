@@ -16,7 +16,7 @@
                         <img class="w-full h-36 md:h-48 object-cover mb-2 md:mb-4 rounded" src="<?php echo get_the_post_thumbnail_url($post, 'my_custom_size'); ?>" alt="<?php the_title(); ?>">
                         
                         <!-- Product Title -->
-                        <h3 class="text-lg md:text-xl font-bold mb-1 md:mb-2 text-white"><?php the_title(); ?></h3>
+                        <h3 class="text-lg md:text-xl font-bold mb-1 md:mb-2 text-white text-center"><?php the_title(); ?></h3>
                         
                         <!-- Product Excerpt -->
                         <p class="text-sm md:text-base text-white">
