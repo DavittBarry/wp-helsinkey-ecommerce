@@ -28,6 +28,50 @@ function Helsinkey_Enqueue_styles()
         '1.0.0'
     );
 }
+// debugging function
+function debug_to_console($data) {
+    $output = $data;
+    if (is_array($output)) {
+        $output = implode(',', $output);
+    }
+    echo "<script>console.log('Debug: " . $output . "');</script>";
+}
+
+// Redirect function
+function redirect_non_admin_users() {
+    if (is_admin() && !current_user_can('administrator') && !(defined('DOING_AJAX') && DOING_AJAX)) {
+        debug_to_console("Redirecting to custom page");
+        wp_redirect(get_permalink(160));
+        exit;
+    }
+}
+add_action('admin_init', 'redirect_non_admin_users');
+
+add_action( 'init', 'update_user_profile' );
+
+function update_user_profile() {
+    if ( isset( $_POST['action'] ) && 'update-user' == $_POST['action'] ) {
+        $current_user = wp_get_current_user();
+        
+        // Update the first name
+        if ( isset( $_POST['first_name'] ) ) {
+            update_user_meta( $current_user->ID, 'first_name', sanitize_text_field( $_POST['first_name'] ) );
+        }
+
+        // Update the last name
+        if ( isset( $_POST['last_name'] ) ) {
+            update_user_meta( $current_user->ID, 'last_name', sanitize_text_field( $_POST['last_name'] ) );
+        }
+
+        // Update the email
+        if ( isset( $_POST['email'] ) ) {
+            $new_email = sanitize_email( $_POST['email'] );
+            if ( is_email( $new_email ) ) {
+                wp_update_user( array( 'ID' => $current_user->ID, 'user_email' => $new_email ) );
+            }
+        }
+    }
+}
 
 add_action('wp_enqueue_scripts', 'Helsinkey_Enqueue_Styles');
 
@@ -147,6 +191,25 @@ function load_single_template($template) {
 }
 
 add_filter('single_template', 'load_single_template');
+
+// Register Tori Post Type
+function create_tori_post_type() {
+    register_post_type('tori',
+        array(
+            'labels' => array(
+                'name' => __('Tori'),
+                'singular_name' => __('Tori Item')
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'rewrite' => array('slug' => 'tori'),
+            'show_in_rest' => true,
+            'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments')
+        )
+    );
+}
+add_action('init', 'create_tori_post_type');
+
 
 function create_event_post_type() {
     register_post_type('events',

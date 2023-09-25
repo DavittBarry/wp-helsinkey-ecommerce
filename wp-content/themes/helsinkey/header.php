@@ -43,9 +43,21 @@
 
             <!-- Login/Register Buttons -->
             <div class="flex flex-col text-base md:text-lg items-center ml-auto">
-                <a href="<?php echo wp_login_url(); ?>" class="bg-gray-800 rounded p-1 w-full text-center hover:bg-hover-blue transition ease-in-out duration-200">Kirjaudu</a>
-                <div class="border-t border-gray-400 w-full my-1"></div>
-                <a href="<?php echo wp_registration_url(); ?>" class="bg-gray-800 rounded p-1 w-full text-center hover:bg-hover-blue transition ease-in-out duration-200">Rekisteröidy</a>
+                <?php if (is_user_logged_in()): 
+                    $current_user = wp_get_current_user();
+                ?>
+                    <a href="<?php echo get_permalink(160); ?>" class="bg-gray-800 rounded p-1 w-full text-center hover:bg-hover-blue transition ease-in-out duration-200">
+                        Hei, <?php echo $current_user->display_name; ?>!
+                    </a>
+                    <div class="border-t border-gray-400 w-full my-1"></div>
+                    <a href="<?php echo wp_logout_url(home_url()); ?>" class="bg-gray-800 rounded p-1 w-full text-center hover:bg-hover-blue transition ease-in-out duration-200">
+                        Kirjaudu ulos
+                    </a>
+                <?php else: ?>
+                    <a href="<?php echo get_permalink(166); ?>" class="bg-gray-800 rounded p-1 w-full text-center hover:bg-hover-blue transition ease-in-out duration-200">Kirjaudu</a>
+                    <div class="border-t border-gray-400 w-full my-1"></div>
+                    <a href="<?php echo get_permalink(168); ?>" class="bg-gray-800 rounded p-1 w-full text-center hover:bg-hover-blue transition ease-in-out duration-200">Rekisteröidy</a>
+                <?php endif; ?>
             </div>
         </div>
 
@@ -84,11 +96,25 @@
                     ]
                 ); 
                 ?>
-                <div class="flex justify-center items-center text-2xl p-4 w-full">
-                    <a href="<?php echo wp_login_url(); ?>" class="flex-1 bg-gray-700 rounded p-1 text-center hover:bg-hover-blue transition ease-in-out duration-200">Kirjaudu</a>
-                    <div class="border-l border-gray-400 h-6 mx-2"></div>
-                    <a href="<?php echo wp_registration_url(); ?>" class="flex-1 bg-gray-700 rounded p-1 text-center hover:bg-hover-blue transition ease-in-out duration-200">Rekisteröidy</a>
-                </div>
+                <?php if (is_user_logged_in()): 
+                    $current_user = wp_get_current_user();
+                ?>
+                    <div class="flex justify-center items-center text-2xl p-4 w-full">
+                        <a href="<?php echo get_permalink(160); ?>" class="flex-1 bg-gray-700 rounded p-1 text-center hover:bg-hover-blue transition ease-in-out duration-200">
+                            Hei, <?php echo $current_user->display_name; ?>!
+                        </a>
+                        <div class="border-l border-gray-400 h-6 mx-2"></div>
+                        <a href="<?php echo wp_logout_url(home_url()); ?>" class="flex-1 bg-gray-700 rounded p-1 text-center hover:bg-hover-blue transition ease-in-out duration-200">
+                            Kirjaudu ulos
+                        </a>
+                    </div>
+                <?php else: ?>
+                    <div class="flex justify-center items-center text-2xl p-4 w-full">
+                        <a href="<?php echo get_permalink(166); ?>" class="flex-1 bg-gray-700 rounded p-1 text-center hover:bg-hover-blue transition ease-in-out duration-200">Kirjaudu</a>
+                        <div class="border-l border-gray-400 h-6 mx-2"></div>
+                        <a href="<?php echo get_permalink(168); ?>" class="flex-1 bg-gray-700 rounded p-1 text-center hover:bg-hover-blue transition ease-in-out duration-200">Rekisteröidy</a>
+                    </div>
+                <?php endif; ?>
             </nav>
         </div>
     </div>
