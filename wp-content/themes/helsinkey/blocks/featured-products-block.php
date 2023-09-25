@@ -12,19 +12,15 @@
                     <?php setup_postdata($post); ?>
                     <?php $product_count++;?>
                     <div class="product-item bg-gray-900 p-2 md:p-4 rounded shadow-lg <?php echo ($product_count > 3) ? 'hidden lg:hidden' : ''; ?> <?php echo ($product_count > 2) ? 'hidden md:hidden lg:block' : ''; ?>">
-                        <!-- Product Thumbnail -->
                         <img class="w-full h-36 md:h-48 object-cover mb-2 md:mb-4 rounded" src="<?php echo get_the_post_thumbnail_url($post, 'my_custom_size'); ?>" alt="<?php the_title(); ?>">
                         
-                        <!-- Product Title -->
                         <h3 class="text-lg md:text-xl font-bold mb-1 md:mb-2 text-white text-center"><?php the_title(); ?></h3>
                         
-                        <!-- Product Excerpt -->
                         <p class="text-sm md:text-base text-white">
                             <?php echo wp_trim_words(get_the_content(), 10, '...'); ?>
                         </p>
                         
-                        <!-- Product Price and Button -->
-                        <div class="flex justify-center items-center">
+                        <div class="flex justify-center mt-6 items-center">
                             <p class="bg-gray-800 text-white text-md md:text-lg px-2 md:px-4 py-2 rounded-xl"><?php echo get_woocommerce_currency_symbol() . get_post_meta(get_the_ID(), '_price', true); ?></p>
                             <a href="<?php the_permalink(); ?>" class="text-white bg-helsinkey-blue text-xs md:text-sm ml-6 px-2 md:px-4 py-2 rounded-xl transition-colors hover:bg-blue-600">Näytä tuote</a>
                         </div>
@@ -33,7 +29,7 @@
                 <?php wp_reset_postdata(); ?>
             <?php endif; ?>
         </div>
-        <!-- "View All Products" button -->
+
         <?php if ($total_products > 2): ?>
             <div class="mt-12 text-center lg:hidden xl:hidden 2xl:hidden">
                 <a href="<?php echo get_permalink(10); ?>" class="text-white bg-helsinkey-blue text-md md:text-md p-4 md:p-4 py-2 rounded-xl transition-colors hover:bg-blue-600">Näytä kaikki tuotteet</a>

@@ -11,38 +11,31 @@
             $blog_query = new WP_Query($args);
             $total_posts = $blog_query->found_posts;
 
-            $post_count = 0;
             if ($blog_query->have_posts()) : 
                 while ($blog_query->have_posts()): 
                     $blog_query->the_post(); 
-                    $post_count++;
                     ?>
-                    <div class="blog-item bg-gray-900 p-2 md:p-4 rounded shadow-lg flex flex-col <?php echo ($post_count === 3) ? 'hidden lg:block' : ''; ?>">
-                        <!-- Blog Thumbnail -->
+                    <div class="blog-item bg-gray-900 p-2 md:p-4 rounded shadow-lg flex flex-col justify-between h-full">
                         <img class="w-full h-36 md:h-48 object-cover mb-2 md:mb-4 rounded" src="<?php echo get_the_post_thumbnail_url($post, 'my_custom_size'); ?>" alt="<?php the_title(); ?>">
                         
-                        <!-- Blog Title -->
                         <a href="<?php the_permalink(); ?>">
                             <h3 class="text-lg md:text-xl font-bold mb-1 md:mb-2 text-white text-center"><?php the_title(); ?></h3>
                         </a>
                         
-                        <!-- Blog Excerpt -->
-                        <div class="flex-grow">
+                        <div class="flex-grow text-center" style="min-height: 100px;">
                             <p class="text-sm md:text-base text-white">
                                 <?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?>
                             </p>
                         </div>
                         
-                        <!-- Read More Button -->
-                        <div class="mt-auto mx-auto flex justify-center items-center">
-                            <a href="<?php the_permalink(); ?>" class="text-white bg-helsinkey-blue text-xs md:text-sm mt-6 px-2 md:px-4 py-2 rounded-xl transition-colors hover:bg-blue-600">Lue lisää</a>
+                        <div class="text-center mt-4">
+                            <a href="<?php the_permalink(); ?>" class="text-white bg-helsinkey-blue text-xs md:text-sm px-2 md:px-4 py-2 rounded-xl transition-colors hover:bg-blue-600">Lue lisää</a>
                         </div>
                     </div>
                 <?php endwhile; 
                 wp_reset_postdata();
             endif; ?>
         </div>
-        <!-- "Read All" button -->
         <?php if ($total_posts > 2): ?>
             <div class="mt-12 text-center lg:hidden xl:hidden 2xl:hidden">
                 <a href="<?php echo get_permalink(117); ?>" class="text-white bg-helsinkey-blue text-md md:text-md p-4 md:p-4 py-2 rounded-xl transition-colors hover:bg-blue-600">Lue kaikki blogit</a>
