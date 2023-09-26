@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Uusi tori post
+ * Template Name: Uusi Etsi Soittajaa Post
  */
 get_header();
 
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'post_title'    => sanitize_text_field($_POST['otsikko']),
         'post_content'  => sanitize_text_field($_POST['kuvaus']),
         'post_status'   => 'publish',
-        'post_type'     => 'tori'
+        'post_type'     => 'etsi_soittajaa'
     );
 
     $post_id = wp_insert_post($new_post);
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!empty($_FILES['kuva']['name'])) {
             require_once(ABSPATH . 'wp-admin/includes/file.php');
             require_once(ABSPATH . 'wp-admin/includes/image.php');
-            
+
             $file = $_FILES['kuva'];
             $upload_overrides = ['test_form' => false];
             $movefile = wp_handle_upload($file, $upload_overrides);
@@ -50,12 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // Update ACF fields
-        update_field('sijainti', sanitize_text_field($_POST['sijainti']), $post_id);
-        update_field('hinta', sanitize_text_field($_POST['hinta']), $post_id);
-
-        update_field('yhteystiedot_nimi', sanitize_text_field($_POST['yhteystiedot_nimi']), $post_id);
-        update_field('yhteystiedot_sahkoposti', sanitize_email($_POST['yhteystiedot_sahkoposti']), $post_id);
-        update_field('yhteystiedot_puhelinnumero', sanitize_text_field($_POST['yhteystiedot_puhelinnumero']), $post_id);
+        update_field('nimi', sanitize_text_field($_POST['nimi']), $post_id);
+        update_field('sahkoposti', sanitize_email($_POST['sahkoposti']), $post_id);
+        update_field('puhelinnumero', sanitize_text_field($_POST['puhelinnumero']), $post_id);
 
         $success = true;
         $new_post_url = get_permalink($post_id);
@@ -73,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </script>
 
 <div class="container mx-auto mb-12 mt-12 p-4 bg-gray-900 text-white rounded-lg shadow-lg">
-    <h2 class="text-2xl font-semibold mb-4 text-center">Uusi 'Tori' -ilmoitus</h2>
+    <h2 class="text-2xl font-semibold mb-4 text-center">Uusi 'Etsi soittajaa' -ilmoitus</h2>
     <form method="post" enctype="multipart/form-data" class="space-y-4 mb-12 text-center">
         <div class="text-center">
             <label for="otsikko" class="block text-lg font-medium">Otsikko</label>
@@ -88,24 +85,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="file" id="kuva" name="kuva" class="mt-1 w-1/2 bg-gray-700 text-white border border-gray-600 rounded-md">
         </div>
         <div class="text-center">
-            <label for="sijainti" class="block text-lg font-medium">Sijainti</label>
-            <input type="text" id="sijainti" name="sijainti" class="mt-1 p-2 w-1/2 bg-gray-700 text-white border border-gray-600 rounded-md">
+            <label for="nimi" class="block text-lg font-medium">Nimi</label>
+            <input type="text" id="nimi" name="nimi" class="mt-1 p-2 w-1/2 bg-gray-700 text-white border border-gray-600 rounded-md">
         </div>
         <div class="text-center">
-            <label for="yhteystiedot_nimi" class="block text-lg font-medium">Nimi</label>
-            <input type="text" id="yhteystiedot_nimi" name="yhteystiedot_nimi" class="mt-1 p-2 w-1/2 bg-gray-700 text-white border border-gray-600 rounded-md">
+            <label for="sahkoposti" class="block text-lg font-medium">Sähköposti</label>
+            <input type="email" id="sahkoposti" name="sahkoposti" class="mt-1 p-2 w-1/2 bg-gray-700 text-white border border-gray-600 rounded-md">
         </div>
         <div class="text-center">
-            <label for="yhteystiedot_sahkoposti" class="block text-lg font-medium">Sähköposti</label>
-            <input type="email" id="yhteystiedot_sahkoposti" name="yhteystiedot_sahkoposti" class="mt-1 p-2 w-1/2 bg-gray-700 text-white border border-gray-600 rounded-md">
-        </div>
-        <div class="text-center">
-            <label for="yhteystiedot_puhelinnumero" class="block text-lg font-medium">Puhelinnumero</label>
-            <input type="text" id="yhteystiedot_puhelinnumero" name="yhteystiedot_puhelinnumero" class="mt-1 p-2 w-1/2 bg-gray-700 text-white border border-gray-600 rounded-md">
-        </div>
-        <div class="text-center">
-            <label for="hinta" class="block text-lg font-medium">Hinta (€)</label>
-            <input type="text" id="hinta" name="hinta" class="mt-1 p-2 w-1/2 bg-gray-700 text-white border border-gray-600 rounded-md">
+            <label for="puhelinnumero" class="block text-lg font-medium">Puhelinnumero</label>
+            <input type="text" id="puhelinnumero" name="puhelinnumero" class="mt-1 p-2 w-1/2 bg-gray-700 text-white border border-gray-600 rounded-md">
         </div>
         <div class="text-center">
             <input type="submit" value="Lähetä" class="bg-blue-600 cursor-pointer hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">

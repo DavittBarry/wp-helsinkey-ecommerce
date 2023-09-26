@@ -10,12 +10,14 @@
             );
             $blog_query = new WP_Query($args);
             $total_posts = $blog_query->found_posts;
+            $post_count = 0;
 
             if ($blog_query->have_posts()) : 
                 while ($blog_query->have_posts()): 
                     $blog_query->the_post(); 
+                    $post_count++;
                     ?>
-                    <div class="blog-item bg-gray-900 p-2 md:p-4 rounded shadow-lg flex flex-col justify-between h-full">
+                    <div class="blog-item bg-gray-900 p-2 md:p-4 rounded shadow-lg flex flex-col justify-between h-full <?php echo ($post_count > 3) ? 'hidden lg:hidden' : ''; ?> <?php echo ($post_count > 2) ? 'hidden md:hidden lg:block' : ''; ?>">
                         <img class="w-full h-36 md:h-48 object-cover mb-2 md:mb-4 rounded" src="<?php echo get_the_post_thumbnail_url($post, 'my_custom_size'); ?>" alt="<?php the_title(); ?>">
                         
                         <a href="<?php the_permalink(); ?>">
@@ -24,7 +26,7 @@
                         
                         <div class="flex-grow text-center" style="min-height: 100px;">
                             <p class="text-sm md:text-base text-white">
-                                <?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?>
+                                <?php echo wp_trim_words(get_the_excerpt(), 10, '...'); ?>
                             </p>
                         </div>
                         

@@ -17,37 +17,32 @@
                     $events_query->the_post(); 
                     $event_count++;
                     ?>
-                    <div class="event-item bg-gray-900 p-2 md:p-4 rounded shadow-lg flex flex-col <?php echo ($event_count === 3) ? 'hidden lg:block' : ''; ?>">
-                        <!-- Event Thumbnail -->
-                        <img class="w-full h-36 md:h-48 object-cover mb-2 md:mb-4 rounded" src="<?php echo get_the_post_thumbnail_url($post, 'my_custom_size'); ?>" alt="<?php the_title(); ?>">
-                        
-                        <!-- Event Title -->
-                        <a href="<?php the_permalink(); ?>">
-                            <h3 class="text-lg md:text-xl font-bold mb-1 md:mb-2 text-white text-center"><?php the_title(); ?></h3>
-                        </a>
-                        
-                        <!-- Event Excerpt -->
-                        <div class="flex-grow">
-                            <p class="text-sm md:text-base text-white">
-                                <?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?>
-                            </p>
-                        </div>
+                    <div class="event-item bg-gray-900 p-2 md:p-4 rounded shadow-lg flex flex-col justify-between <?php echo ($event_count > 3) ? 'hidden lg:hidden' : ''; ?> <?php echo ($event_count > 2) ? 'hidden md:hidden lg:block' : ''; ?>">
+                        <div class="space-y-4 min-h-[250px]">
+                            <img class="w-full h-36 md:h-48 object-cover rounded" src="<?php echo get_the_post_thumbnail_url($post, 'my_custom_size'); ?>" alt="<?php the_title(); ?>">
+                            
+                            <a href="<?php the_permalink(); ?>">
+                                <h3 class="text-lg md:text-xl font-bold text-white text-center"><?php the_title(); ?></h3>
+                            </a>
+                            
+                            <div class="flex-grow">
+                                <p class="text-sm md:text-base text-white">
+                                    <?php echo wp_trim_words(get_the_excerpt(), 15, '...'); ?>
+                                </p>
+                            </div>
 
-                        <!-- Event Date and Location -->
-                        <div class="text-sm mx-auto md:text-base text-white mt-2"> 
-                            <?php echo get_field('event_location'); ?> @ <?php echo get_field('event_date'); ?>
+                            <div class="text-sm mx-auto md:text-base text-white"> 
+                                <?php echo get_field('event_location'); ?> @ <?php echo get_field('event_date'); ?>
+                            </div>
                         </div>
-
-                        <!-- Read More Button -->
-                        <div class="mt-auto flex justify-center items-center">
-                            <a href="<?php the_permalink(); ?>" class="text-white bg-helsinkey-blue text-xs md:text-sm ml-6 mt-6 px-2 md:px-4 py-2 rounded-xl transition-colors hover:bg-blue-600">Lue lisää</a>
+                        <div class="mt-4 flex justify-center items-center">
+                            <a href="<?php the_permalink(); ?>" class="text-white bg-helsinkey-blue text-xs md:text-sm px-2 md:px-4 py-2 rounded-xl transition-colors hover:bg-blue-600">Lue lisää</a>
                         </div>
                     </div>
                 <?php endwhile; 
                 wp_reset_postdata();
             endif; ?>
         </div>
-        <!-- "Read All" button -->
         <?php if ($total_events > 2): ?>
             <div class="mt-12 text-center lg:hidden xl:hidden 2xl:hidden">
                 <a href="<?php echo get_permalink(151); ?>" class="text-white bg-helsinkey-blue text-md md:text-md p-4 md:p-4 py-2 rounded-xl transition-colors hover:bg-blue-600">Näytä kaikki tapahtumat</a>

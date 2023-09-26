@@ -14,10 +14,8 @@
 <header class="bg-gray-900 shadow-header-shadow">
     <div class="container mx-auto flex flex-wrap items-center justify-between py-4">
         
-        <!-- Desktop & Tablet View -->
         <div class="hidden md:flex items-center w-full justify-between flex-col md:flex-row">
             
-            <!-- Logo Section -->
             <a href="<?php echo esc_url(home_url('/')); ?>" 
             class="flex items-center m-2 bg-gray-900 rounded p-1 hover:bg-gray-800 transition ease-in-out duration-200">
                 <img src="/logo.png" alt="Logo" style="height: 60px; width: 60px;">
@@ -26,7 +24,6 @@
                 </div>
             </a>
 
-            <!-- Navigation Menu -->
             <nav class="flex items-center mb-4 md:mb-0 ml-auto">
                 <?php 
                 wp_nav_menu(
@@ -41,7 +38,6 @@
                 ?>
             </nav>
 
-            <!-- Login/Register Buttons -->
             <div class="flex flex-col text-base md:text-lg items-center ml-auto">
                 <?php if (is_user_logged_in()): 
                     $current_user = wp_get_current_user();
@@ -58,23 +54,24 @@
                     <div class="border-t border-gray-400 w-full my-1"></div>
                     <a href="<?php echo get_permalink(168); ?>" class="bg-gray-800 rounded p-1 w-full text-center hover:bg-hover-blue transition ease-in-out duration-200">Rekisteröidy</a>
                 <?php endif; ?>
+                
+                <div class="border-t border-gray-400 w-full my-1"></div>
+                <a href="<?php echo get_permalink(201); ?>" class="bg-gray-800 rounded p-1 w-full text-center hover:bg-hover-blue transition ease-in-out duration-200">
+                    Ostoskori
+                </a>
             </div>
         </div>
 
-        <!-- Mobile View -->
         <div x-data="{ open: false }" class="md:hidden flex items-center justify-between w-full relative pr-4 pl-4 mb-1.5">
             
-            <!-- Mobile Logo -->
             <a href="<?php echo esc_url(home_url('/')); ?>">
                 <img src="/logo.png" alt="Logo" style="height: 60px; width: 60px;">
             </a>
             
-            <!-- Mobile Text -->
             <div class="flex-grow text-4xl font-bold text-center">
                 <a href="<?php echo esc_url(home_url('/')); ?>" class="text">Helsinkey</a>
             </div>
             
-            <!-- Mobile Hamburger Menu -->
             <div class="w-10 text-right">
                 <button @click="open = !open" class="p-2">
                     <div x-show="!open" style="font-size: 30px;">☰</div>
@@ -82,7 +79,6 @@
                 </button>
             </div>
             
-            <!-- Mobile Menu -->
             <nav x-show="open" x-cloak 
                 class="absolute w-full top-[5.1rem] left-0 z-50 flex flex-col space-y-2 bg-gray-800 text-2xl">
                 <?php 
@@ -115,6 +111,12 @@
                         <a href="<?php echo get_permalink(168); ?>" class="flex-1 bg-gray-700 rounded p-1 text-center hover:bg-hover-blue transition ease-in-out duration-200">Rekisteröidy</a>
                     </div>
                 <?php endif; ?>
+                
+                <div class="flex justify-center items-center text-2xl p-4 w-full">
+                    <a href="<?php echo get_permalink(201); ?>" class="flex-1 bg-gray-700 rounded p-1 text-center hover:bg-hover-blue transition ease-in-out duration-200">
+                        Ostoskori
+                    </a>
+                </div>
             </nav>
         </div>
     </div>

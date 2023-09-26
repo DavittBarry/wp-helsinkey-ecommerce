@@ -23,11 +23,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<div class="container mx-auto mt-12 p-4 bg-gray-900 text-white rounded-lg shadow-lg w-3/4">
+<div class="container mx-auto mt-12 p-4 bg-gray-900 text-white rounded-lg shadow-lg w-full md:w-3/4 lg:w-3/4">
     <h2 class="text-2xl font-semibold mb-4 text-center">Käyttäjäprofiili</h2>
 
-    <div class="flex justify-center">
-        <div class="w-1/4">
+    <div class="flex flex-col md:flex-row justify-center">
+        <div class="w-full md:w-3/4 lg:w-1/2">
             <div class="mb-8 text-left">
                 <h3 class="text-xl font-semibold mb-3">Nykyiset tiedot:</h3>
                 <p class="m-2 mb-5">
@@ -60,22 +60,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
 
                 <div class="text-center">
-                    <input type="submit" value="Päivitä tiedot" style="cursor: pointer;" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <input type="submit" value="Päivitä tiedot" class="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 </div>
             </form>
         </div>
     </div>
 
-
     <div class="user-posts mt-8">
         <h3 class="text-xl font-semibold mb-2 text-center">Omat julkaisut:</h3>
         <?php
-        $post_types = ['tori', 'etsi soittajaa', 'post', 'artists', 'events'];
+        $post_types = ['tori', 'etsi_soittajaa', 'post', 'artists', 'events'];
         foreach ($post_types as $type) {
             if (!current_user_can('administrator') && !in_array($type, ['tori', 'etsi soittajaa'])) {
                 continue;
             }
-            echo '<h4 class="text-lg font-bold mb-2 text-center">' . ucfirst($type) . '</h4>';
+            echo '<h4 class="text-lg font-bold mb-2 text-center">' . str_replace('_', ' ', ucfirst($type)) . '</h4>';
             $args = array(
                 'author' => $current_user->ID,
                 'post_type' => $type
@@ -84,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($user_posts->have_posts()): 
                 while ($user_posts->have_posts()): $user_posts->the_post();
                 ?>
-                    <div class="post mb-6 w-1/2 p-4 rounded-lg mx-auto bg-gray-800 text-center">
+                    <div class="post mb-6 w-full md:w-1/2 lg:w-1/2 p-4 rounded-lg mx-auto bg-gray-800 text-center">
                         <h4 class="text-xl font-bold mb-2"><?php the_title(); ?></h4>
                         <div class="post-content mb-2">
                             <?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?>
@@ -94,14 +93,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <a href="<?php the_permalink(); ?>" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">Muokkaa</a>
                             <form action="" method="post" class="inline-block">
                                 <input type="hidden" name="delete_post_id" value="<?php the_ID(); ?>">
-                                <input type="submit" value="Poista" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded inline-block" style="cursor: pointer;" onclick="return confirm('Haluatko varmasti poistaa tämän julkaisun?')">
+                                <input type="submit" value="Poista" class="cursor-pointer bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded inline-block" onclick="return confirm('Haluatko varmasti poistaa tämän julkaisun?')">
                             </form>
                         </div>
                     </div>
                 <?php 
                 endwhile; 
             else:
-                echo '<p class="post mb-6 w-1/2 p-4 rounded-lg mx-auto bg-gray-800 text-center">Ei julkaisuja</p>';
+                echo '<p class="post mb-6 w-full md:w-1/2 lg:w-1/3 p-4 rounded-lg mx-auto bg-gray-800 text-center">Ei julkaisuja</p>';
             endif; 
             wp_reset_query();
         }

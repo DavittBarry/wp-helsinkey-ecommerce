@@ -47,23 +47,37 @@ function redirect_non_admin_users() {
 }
 add_action('admin_init', 'redirect_non_admin_users');
 
+add_action('woocommerce_cart_updated', 'custom_cart_update_redirect');
+
+function custom_cart_update_redirect() {
+    if (is_page_template('woocommerce-ostoskori.php')) {
+        wp_safe_redirect(get_permalink(201));
+        exit();
+    }
+}
+
+function remove_single_product_notices() {
+    if (is_product()) {
+        remove_action('woocommerce_before_single_product', 'wc_print_notices', 10);
+    }
+}
+add_action('wp', 'remove_single_product_notices');
+
+
 add_action( 'init', 'update_user_profile' );
 
 function update_user_profile() {
     if ( isset( $_POST['action'] ) && 'update-user' == $_POST['action'] ) {
         $current_user = wp_get_current_user();
         
-        // Update the first name
         if ( isset( $_POST['first_name'] ) ) {
             update_user_meta( $current_user->ID, 'first_name', sanitize_text_field( $_POST['first_name'] ) );
         }
 
-        // Update the last name
         if ( isset( $_POST['last_name'] ) ) {
             update_user_meta( $current_user->ID, 'last_name', sanitize_text_field( $_POST['last_name'] ) );
         }
 
-        // Update the email
         if ( isset( $_POST['email'] ) ) {
             $new_email = sanitize_email( $_POST['email'] );
             if ( is_email( $new_email ) ) {
@@ -192,7 +206,21 @@ function load_single_template($template) {
 
 add_filter('single_template', 'load_single_template');
 
-// Register Tori Post Type
+function create_etsi_soittajaa_post_type() {
+    register_post_type('etsi_soittajaa',
+        array(
+            'labels' => array(
+                'name' => __('Etsi soittajaa'),
+                'singular_name' => __('Etsi soittajaa')
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'supports' => array('title', 'editor', 'thumbnail'),
+        )
+    );
+}
+add_action('init', 'create_etsi_soittajaa_post_type');
+
 function create_tori_post_type() {
     register_post_type('tori',
         array(
@@ -210,6 +238,11 @@ function create_tori_post_type() {
 }
 add_action('init', 'create_tori_post_type');
 
+add_filter('woocommerce_product_single_add_to_cart_text', 'woo_custom_single_add_to_cart_text');
+
+function woo_custom_single_add_to_cart_text() {
+    return __('Lisää ostoskoriin', 'woocommerce');
+}
 
 function create_event_post_type() {
     register_post_type('events',

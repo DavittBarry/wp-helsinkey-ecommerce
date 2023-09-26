@@ -7,10 +7,22 @@
 
                 <?php if (has_post_thumbnail()) : ?>
                     <div class="relative w-full  mb-2 md:mb-4 rounded" id="image-zoom-container">
-                        <img id="zoomable-image" class="w-full  object-cover rounded" src="<?php the_post_thumbnail_url('large'); ?>" data-full-img="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>">
+                        <img id="zoomable-image" class="w-full object-cover rounded" src="<?php the_post_thumbnail_url('large'); ?>" data-full-img="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>">
                         <a href="<?php the_post_thumbnail_url('full'); ?>" class="absolute inset-0" target="_blank"></a>
                     </div>
                 <?php endif; ?>
+
+                <?php
+                    $current_user = wp_get_current_user();
+                    if (is_user_logged_in() && $current_user->ID === get_the_author_meta('ID')) {
+                ?>
+                    <div class="mt-6 mb-6 text-center">
+                        <a href="<?php echo get_permalink(230); ?>"
+                        class="text-white bg-green-600 text-md p-4 py-2 rounded-xl transition-colors hover:bg-green-700">
+                            Muokkaa
+                        </a>
+                    </div>
+                <?php } ?>
 
                 <h1 class="text-2xl md:text-3xl font-bold mb-2 text-white text-center">
                     <?php the_title(); ?>
@@ -29,9 +41,8 @@
                         <p class="font-bold">Hinta:</p>
                         <p class="mt-1">€<?php the_field('hinta'); ?></p>
                     </div>
-                    <div class="mb-8 mt-6">
-                        <p class="font-bold">Yhteystiedot:</p>
-                        <ul class="mt-3">
+                    <div >
+                        <ul>
                             <li class="mt-2">
                                 <strong>Nimi:</strong>
                                 <p class="ml-2 mt-1"><?php the_field('yhteystiedot_nimi'); ?></p>
@@ -66,19 +77,15 @@
 </div>
 
 <script>
-    // Simple Image Zoom
     const imageContainer = document.getElementById('image-zoom-container');
     const zoomableImage = document.getElementById('zoomable-image');
 
     let fullImage = new Image();
     fullImage.src = zoomableImage.getAttribute('data-full-img');
 
-    imageContainer.addEventListener('mousemove', function(e) {
-        const x = e.clientX - e.target.offsetLeft;
-        const y = e.clientY - e.target.offsetTop;
-
+    imageContainer.addEventListener('mouseenter', function(e) {
         zoomableImage.src = fullImage.src;
-        zoomableImage.style.transformOrigin = `${x}px ${y}px`;
+        zoomableImage.style.transformOrigin = '50% 50%';
         zoomableImage.style.transform = 'scale(1.5)';
     });
 
