@@ -1,7 +1,4 @@
 <?php
-/**
- * Template Name: Edit tori post
- */
 get_header();
 
 if (!is_user_logged_in()) {
@@ -15,11 +12,9 @@ $post_to_edit = get_post($post_id_to_edit);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $post_title = sanitize_text_field($_POST['otsikko']);
     $post_content = sanitize_textarea_field($_POST['kuvaus']);
-    $sijainti = sanitize_text_field($_POST['sijainti']);
-    $hinta = sanitize_text_field($_POST['hinta']);
-    $nimi = sanitize_text_field($_POST['yhteystiedot_nimi']);
-    $sahkoposti = sanitize_email($_POST['yhteystiedot_sahkoposti']);
-    $puhelinnumero = sanitize_text_field($_POST['yhteystiedot_puhelinnumero']);
+    $nimi = sanitize_text_field($_POST['nimi']);
+    $sahkoposti = sanitize_email($_POST['sahkoposti']);
+    $puhelinnumero = sanitize_text_field($_POST['puhelinnumero']);
 
     $update_post_args = array(
         'ID' => $post_id_to_edit,
@@ -28,11 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     );
     wp_update_post($update_post_args);
 
-    update_field('sijainti', $sijainti, $post_id_to_edit);
-    update_field('hinta', $hinta, $post_id_to_edit);
-    update_field('yhteystiedot_nimi', $nimi, $post_id_to_edit);
-    update_field('yhteystiedot_sahkoposti', $sahkoposti, $post_id_to_edit);
-    update_field('yhteystiedot_puhelinnumero', $puhelinnumero, $post_id_to_edit);
+    update_field('nimi', $nimi, $post_id_to_edit);
+    update_field('sahkoposti', $sahkoposti, $post_id_to_edit);
+    update_field('puhelinnumero', $puhelinnumero, $post_id_to_edit);
 
     if (!empty($_FILES['kuva']['name'])) {
         require_once(ABSPATH . 'wp-admin/includes/image.php');
@@ -65,8 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <div class="container mx-auto mb-12 mt-12 p-4 bg-gray-900 text-white rounded-lg shadow-lg">
-    <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-center">Muokkaa 'Tori' -ilmoitus</h2>
-    
+    <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-center">Muokkaa 'Etsi soittajaa' -ilmoitus</h2>
     <form method="post" enctype="multipart/form-data" class="space-y-4 mb-12 text-center">
         <div class="text-center md:w-3/4 mx-auto">
             <label for="otsikko" class="block text-lg md:text-xl font-medium">Otsikko</label>
@@ -91,24 +83,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="file" id="kuva" name="kuva" class="mt-1 w-full md:w-3/4 bg-gray-700 text-white border border-gray-600 rounded-md">
         </div>
         <div class="text-center md:w-3/4 mx-auto">
-            <label for="sijainti" class="block text-lg md:text-xl font-medium">Sijainti</label>
-            <input type="text" id="sijainti" name="sijainti" value="<?php echo esc_attr(get_field('sijainti', $post_to_edit->ID)); ?>" class="mt-1 p-2 w-full md:w-3/4 bg-gray-700 text-white border border-gray-600 rounded-md">
+            <label for="nimi" class="block text-lg md:text-xl font-medium">Nimi</label>
+            <input type="text" id="nimi" name="nimi" value="<?php echo esc_attr(get_field('nimi', $post_to_edit->ID)); ?>" class="mt-1 p-2 w-full md:w-3/4 bg-gray-700 text-white border border-gray-600 rounded-md">
         </div>
         <div class="text-center md:w-3/4 mx-auto">
-            <label for="hinta" class="block text-lg md:text-xl font-medium">Hinta (€)</label>
-            <input type="text" id="hinta" name="hinta" value="<?php echo esc_attr(get_field('hinta', $post_to_edit->ID)); ?>" class="mt-1 p-2 w-full md:w-3/4 bg-gray-700 text-white border border-gray-600 rounded-md">
+            <label for="sahkoposti" class="block text-lg md:text-xl font-medium">Sähköposti</label>
+            <input type="email" id="sahkoposti" name="sahkoposti" value="<?php echo esc_attr(get_field('sahkoposti', $post_to_edit->ID)); ?>" class="mt-1 p-2 w-full md:w-3/4 bg-gray-700 text-white border border-gray-600 rounded-md">
         </div>
         <div class="text-center md:w-3/4 mx-auto">
-            <label for="yhteystiedot_nimi" class="block text-lg md:text-xl font-medium">Nimi</label>
-            <input type="text" id="yhteystiedot_nimi" name="yhteystiedot_nimi" value="<?php echo esc_attr(get_field('yhteystiedot_nimi', $post_to_edit->ID)); ?>" class="mt-1 p-2 w-full md:w-3/4 bg-gray-700 text-white border border-gray-600 rounded-md">
-        </div>
-        <div class="text-center md:w-3/4 mx-auto">
-            <label for="yhteystiedot_sahkoposti" class="block text-lg md:text-xl font-medium">Sähköposti</label>
-            <input type="email" id="yhteystiedot_sahkoposti" name="yhteystiedot_sahkoposti" value="<?php echo esc_attr(get_field('yhteystiedot_sahkoposti', $post_to_edit->ID)); ?>" class="mt-1 p-2 w-full md:w-3/4 bg-gray-700 text-white border border-gray-600 rounded-md">
-        </div>
-        <div class="text-center md:w-3/4 mx-auto">
-            <label for="yhteystiedot_puhelinnumero" class="block text-lg md:text-xl font-medium">Puhelinnumero</label>
-            <input type="text" id="yhteystiedot_puhelinnumero" name="yhteystiedot_puhelinnumero" value="<?php echo esc_attr(get_field('yhteystiedot_puhelinnumero', $post_to_edit->ID)); ?>" class="mt-1 p-2 w-full md:w-3/4 bg-gray-700 text-white border border-gray-600 rounded-md">
+            <label for="puhelinnumero" class="block text-lg md:text-xl font-medium">Puhelinnumero</label>
+            <input type="text" id="puhelinnumero" name="puhelinnumero" value="<?php echo esc_attr(get_field('puhelinnumero', $post_to_edit->ID)); ?>" class="mt-1 p-2 w-full md:w-3/4 bg-gray-700 text-white border border-gray-600 rounded-md">
         </div>
         <div class="text-center md:w-3/4 mx-auto">
             <input type="submit" value="Muokkaa" class="bg-blue-600 cursor-pointer hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">

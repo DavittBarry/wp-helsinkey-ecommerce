@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="text-center">
             <label for="kuvaus" class="block text-lg font-medium">Kuvaus</label>
-            <textarea id="kuvaus" name="kuvaus" class="mt-1 p-2 w-1/2 bg-gray-700 text-white border border-gray-600 rounded-md"></textarea>
+            <textarea id="kuvaus" name="kuvaus" class="mt-1 h-[300px] p-2 w-1/2 bg-gray-700 text-white border border-gray-600 rounded-md"></textarea>
         </div>
         <div class="text-center">
             <label for="kuva" class="block text-lg font-medium">Kuva</label>

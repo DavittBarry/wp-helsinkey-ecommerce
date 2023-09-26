@@ -25,6 +25,10 @@
                     align-items: center;
                 }
 
+                div.woocommerce-tabs.wc-tabs-wrapper > ul {
+                    display: none !important;
+                }
+
                 .quantity .qty {
                     color: white !important;
                     background-color: #4A5568 !important;
@@ -40,10 +44,6 @@
                     padding: 0.3rem !important;
                     margin-left: 1rem;
                     transition: background-color 0.3s ease-in-out !important;
-                }
-                
-                #product-141 > div.woocommerce-tabs.wc-tabs-wrapper > ul {
-                    display: none !important;
                 }
 
                 .single_add_to_cart_button:hover {

@@ -8,6 +8,13 @@
         src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" 
         defer
     ></script>
+    <style>
+        @media (min-width: 1024px) {
+            .header-menu-container .rounded {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body <?php body_class('bg-background text-text'); ?>>
 
@@ -31,7 +38,7 @@
                         'theme_location' => 'header-menu',
                         'container_class' => 'header-menu-container',
                         'menu_class' => 'flex',
-                        'link_before' => '<div class="rounded hover:bg-hover-blue text-base transition ease-in-out duration-200">| ',
+                        'link_before' => '<div class="rounded hover:bg-hover-blue  text-base transition ease-in-out duration-200">| ',
                         'link_after' => ' |</div>'
                     ]
                 ); 

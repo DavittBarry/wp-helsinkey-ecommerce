@@ -24,7 +24,7 @@
                 <img 
                 src="<?php echo get_template_directory_uri(); 
                 ?>/assets/images/square-linkedin-512.webp
-                " alt="LinkedIn" width="32" height="32">
+                " alt="LinkedIn" width="52" height="52">
             </a>
             <!-- Portfolio -->
             <a 
@@ -41,7 +41,7 @@
                 <img 
                 src="<?php 
                 echo get_template_directory_uri(); ?>/assets/images/profile.png"
-                alt="Portfolio" width="32" height="32">
+                alt="Portfolio" width="52" height="52">
             </a>
             <!-- GitHub -->
             <a 
@@ -59,7 +59,7 @@
                 src=
                 "<?php echo get_template_directory_uri();
                 ?>/assets/images/github-mark-white.svg
-                " alt="GitHub" width="32" height="32">
+                " alt="GitHub" width="52" height="52">
             </a>
         </div>
     </div>

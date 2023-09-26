@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 get_header(); 
 ?>
 
-<div class="container mx-auto mt-12 p-4 bg-gray-900 text-white rounded-lg shadow-lg flex flex-col items-center">
+<div class="container mx-auto mt-12 p-4 mb-6 bg-gray-900 text-white rounded-lg shadow-lg flex flex-col items-center">
     <h2 class="text-2xl font-semibold mb-4 text-center">Kirjautuminen</h2>
 
     <?php if (isset($error) && !empty($error)) : ?>
@@ -46,7 +46,7 @@ get_header();
         </div>
 
         <div class="text-center">
-            <input type="submit" value="Kirjaudu" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <input type="submit" value="Kirjaudu" class="bg-blue-600 cursor-pointer  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         </div>
     </form>
 </div>

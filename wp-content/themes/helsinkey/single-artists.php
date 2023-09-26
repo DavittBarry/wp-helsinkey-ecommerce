@@ -13,7 +13,6 @@
             </div>
         </div>
 
-        <!-- Comments Section -->
         <section class="mt-6 bg-gray-900 p-4 rounded-lg shadow-lg w-full max-w-3xl text-center">
             <div class="mb-4">
                 <h2 class="text-xl font-bold text-white mb-2">Kommentit</h2>
@@ -26,8 +25,6 @@
         </section>
 
         <style>
-
-            /* Add this rule to make links in the content area visible */
             .flex-grow a {
                 color: #63b3ed;
                 text-decoration: underline;
@@ -39,7 +36,6 @@
                 text-decoration: none;
             }
 
-            /* Custom styles for comment section links */
             .comment-respond a, .comment-list a {
                 color: #63b3ed;
                 text-decoration: underline;
@@ -49,13 +45,11 @@
                 text-decoration: none;
             }
 
-            /* Comment list styles */
             .comment-list {
                 list-style: none;
                 padding-left: 0;
             }
 
-            /* Style to put the avatar and metadata inline */
             .comment-author .avatar, .comment-author, .comment-metadata {
                 display: inline-block;
                 vertical-align: middle;
@@ -73,7 +67,6 @@
                 color: #aaaaaa;
             }
 
-            /* Comment reply link styling */
             .comment-reply-link {
                 background: #63b3ed;
                 color: white;
@@ -91,7 +84,6 @@
                 content: none;
             }
 
-            /* Comment form styles */
             .comment-form label {
                 color: #ffffff;
             }
@@ -116,12 +108,10 @@
                 background-color: #4a90e2;
             }
 
-            /* Hide default checkbox */
             input#wp-comment-cookies-consent {
                 display: none;
             }
 
-            /* Custom checkbox design */
             input#wp-comment-cookies-consent + label {
                 position: relative;
                 padding-left: 30px;
@@ -140,7 +130,6 @@
                 border-radius: 3px;
             }
 
-            /* Show a checkmark when checked */
             input#wp-comment-cookies-consent:checked + label:after {
                 content: "";
                 position: absolute;
@@ -157,7 +146,6 @@
                 display: none;
             }
 
-            /* Comment box  */
             .comment-content {
                 display: inline-block;
                 max-width: 100%;
@@ -198,9 +186,8 @@
             }
         </style>
 
-        <!-- Back to All Artists -->
         <div class="mt-6 text-center">
-            <a href="<?php echo get_permalink(get_option('page_for_artists')); ?>" class="text-white bg-helsinkey-blue text-md p-4 py-2 rounded-xl transition-colors hover:bg-blue-600">Takaisin kaikkiin taiteilijoihin</a>
+            <a href="<?php echo get_permalink(8); ?>" class="text-white bg-helsinkey-blue text-md p-4 py-2 rounded-xl transition-colors hover:bg-blue-600">Takaisin kaikkiin taiteilijoihin</a>
         </div>
 
     <?php endwhile; endif; ?>

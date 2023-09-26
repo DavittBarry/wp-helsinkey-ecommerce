@@ -17,8 +17,8 @@
                     if (is_user_logged_in() && $current_user->ID === get_the_author_meta('ID')) {
                 ?>
                     <div class="mt-6 mb-6 text-center">
-                        <a href="<?php echo get_permalink(200); ?>"
-                        class="text-white bg-green-600 text-md p-4 py-2 rounded-xl transition-colors hover:bg-green-700">
+                        <a href="<?php echo add_query_arg(['page_id' => 238, 'post_id' => get_the_ID()], home_url()); ?>"
+                            class="text-white bg-green-600 text-md p-4 py-2 rounded-xl transition-colors hover:bg-green-700">
                             Muokkaa
                         </a>
                     </div>

@@ -20,7 +20,7 @@ get_header(); ?>
                     Lisää uusi ilmoitus
                 </button>
             <?php else : ?>
-                <a href="<?php echo get_permalink(221); ?>" class="bg-helsinkey-blue hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                <a href="<?php echo get_permalink(166); ?>" class="bg-helsinkey-blue hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
                     Lisää uusi ilmoitus
                 </a>
             <?php endif; ?>

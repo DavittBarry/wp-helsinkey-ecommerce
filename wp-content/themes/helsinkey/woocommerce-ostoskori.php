@@ -235,3 +235,5 @@ if (isset($_POST['update_cart'])) {
     });
 });
 </script>
+
+<?php get_footer(); ?>
