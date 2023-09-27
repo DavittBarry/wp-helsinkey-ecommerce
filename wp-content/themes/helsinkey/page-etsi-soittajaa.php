@@ -44,7 +44,7 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
                     $etsi_soittajaa_query->the_post();
             ?>
                 <div class="etsi-soittajaa-item bg-gray-900 p-4 shadow-lg rounded text-white flex flex-col">
-                    <img class="w-full h-36 md:h-48 object-cover mb-2 md:mb-4 rounded" src="<?php echo get_the_post_thumbnail_url($post, array(600, 400)); ?>" alt="<?php the_title(); ?>">
+                    <img class="w-full h-36 md:h-48 object-cover mb-2 md:mb-4 rounded" src="<?php echo get_the_post_thumbnail_url($post, 'my_custom_size'); ?>" alt="<?php the_title(); ?>">
                     <h3 class="text-lg md:text-xl font-bold mb-2 text-center">
                         <a href="<?php the_permalink(); ?>">
                             <?php the_title(); ?>
@@ -88,4 +88,11 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
     });
 </script>
 
-<?php get_footer(); ?>
+<?php
+    $current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
+    if ($current_language === 'en') {
+        get_footer('english');
+    } else {
+        get_footer();
+    }
+?>

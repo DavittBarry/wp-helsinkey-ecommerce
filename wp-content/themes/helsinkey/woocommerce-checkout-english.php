@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Kassa
+Template Name: Checkout English
 */
 ?>
 
@@ -15,7 +15,7 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
 
 <div class="container mx-auto px-4 py-6 md:py-20 flex flex-col items-center">
     <div class="bg-gray-900 p-4 rounded-lg shadow-lg w-full max-w-3xl text-white">
-        <h1 class="text-2xl md:text-3xl font-bold mb-2 text-center">Kassa</h1>
+        <h1 class="text-2xl md:text-3xl font-bold mb-2 text-center">Checkout</h1>
         
         <?php
         if ( WC()->cart->is_empty() ) {

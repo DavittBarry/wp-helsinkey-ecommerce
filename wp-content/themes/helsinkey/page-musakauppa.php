@@ -32,7 +32,7 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
                     $artists_query->the_post();
             ?>
                 <div class="special-offer-item bg-gray-900 p-4 rounded-lg shadow-lg flex flex-col">
-                    <img class="w-full h-36 md:h-48 object-cover mb-2 md:mb-4 rounded" src="<?php echo get_the_post_thumbnail_url($post, array(600, 400)); ?>" alt="<?php the_title(); ?>">
+                    <img class="w-full h-36 md:h-48 object-cover mb-2 md:mb-4 rounded" src="<?php echo get_the_post_thumbnail_url($post, 'my_custom_size'); ?>" alt="<?php the_title(); ?>">
                     
                     <h3 class="text-lg md:text-xl font-bold mb-2 text-white text-center">
                         <a href="<?php the_permalink(); ?>">
@@ -59,4 +59,11 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
     </div>
 </div>
 
-<?php get_footer(); ?>
+<?php
+    $current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
+    if ($current_language === 'en') {
+        get_footer('english');
+    } else {
+        get_footer();
+    }
+?>

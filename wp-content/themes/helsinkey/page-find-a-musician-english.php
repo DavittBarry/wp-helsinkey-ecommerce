@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Tori
+ * Template Name: Find a musician english
  */
 $current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
     if ($current_language === 'en') {
@@ -11,23 +11,23 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
 ?>
 
 <div class="container mx-auto mt-3 md:mt-3">
-    <div class="tori-section py-6 md:py-6">
+    <div class="etsi-soittajaa-section py-6 md:py-6">
         <h2 class="text-2xl md:text-3xl font-semibold mb-4 md:mb-6 text-center">
-            Tori
+            Find a musician
         </h2>
 
         <p class="mb-4 md:mb-6 text-center">
-            Myy käytettyjä musatavaroita
+            Find artists for your band or project
         </p>
 
         <div class="text-center mb-8">
             <?php if (is_user_logged_in()) : ?>
-                <button id="newToriPost" class="bg-helsinkey-blue hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                    Lisää uusi ilmoitus
+                <button id="newEtsiSoittajaaPost" class="bg-helsinkey-blue hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                    Post a new advertisement
                 </button>
             <?php else : ?>
-                <a href="<?php echo get_permalink(166); ?>" class="bg-helsinkey-blue hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                    Lisää uusi ilmoitus
+                <a href="<?php echo get_permalink(6993); ?>" class="bg-helsinkey-blue hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                    Post a new advertisement
                 </a>
             <?php endif; ?>
         </div>
@@ -35,17 +35,16 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             <?php
             $args = array(
-                'post_type' => 'tori',
+                'post_type' => 'etsi_soittajaa',
                 'posts_per_page' => -1
             );
-            $tori_query = new WP_Query($args);
-            if ($tori_query->have_posts()) :
-                while ($tori_query->have_posts()) :
-                    $tori_query->the_post();
-                    $hinta = get_field('hinta');
+            $etsi_soittajaa_query = new WP_Query($args);
+            if ($etsi_soittajaa_query->have_posts()) :
+                while ($etsi_soittajaa_query->have_posts()) :
+                    $etsi_soittajaa_query->the_post();
             ?>
-                <div class="tori-item bg-gray-900 p-4 shadow-lg rounded text-white flex flex-col">
-                    <img class="w-full h-36 md:h-48 object-cover mb-2 md:mb-4 rounded" src="<?php echo get_the_post_thumbnail_url($post, 'my_custom_size'); ?>" alt="<?php the_title(); ?>">
+                <div class="etsi-soittajaa-item bg-gray-900 p-4 shadow-lg rounded text-white flex flex-col">
+                    <img class="w-full h-36 md:h-48 object-cover mb-2 md:mb-4 rounded" src="<?php echo get_the_post_thumbnail_url($post, array(600, 400)); ?>" alt="<?php the_title(); ?>">
                     <h3 class="text-lg md:text-xl font-bold mb-2 text-center">
                         <a href="<?php the_permalink(); ?>">
                             <?php the_title(); ?>
@@ -64,11 +63,8 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
                         ?>
                     </div>
                     <div class="mt-auto flex justify-center items-center">
-                        <p class="bg-gray-800 text-white text-md md:text-lg px-2 mt-6 md:px-4 py-2 rounded-xl">
-                            <span style="vertical-align: middle;">€</span> <?php echo $hinta; ?>
-                        </p>
-                        <a href="<?php the_permalink(); ?>" class="text-white bg-helsinkey-blue text-xs md:text-sm ml-6 mt-6 px-2 md:px-4 py-2 rounded-xl transition-colors hover:bg-blue-600">
-                            Näytä ilmoitus
+                        <a href="<?php the_permalink(); ?>" class="text-white bg-helsinkey-blue text-xs md:text-sm mt-6 px-2 md:px-4 py-2 rounded-xl transition-colors hover:bg-blue-600">
+                            Show ad
                         </a>
                     </div>
                 </div>
@@ -84,9 +80,9 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         <?php if (is_user_logged_in()) : ?>
-            const newToriPostBtn = document.getElementById('newToriPost');
-            newToriPostBtn.addEventListener('click', function() {
-                window.location.href = "<?php echo get_permalink(192); ?>";
+            const newEtsiSoittajaaPostBtn = document.getElementById('newEtsiSoittajaaPost');
+            newEtsiSoittajaaPostBtn.addEventListener('click', function() {
+                window.location.href = "<?php echo get_permalink(6993); ?>";
             });
         <?php endif; ?>
     });

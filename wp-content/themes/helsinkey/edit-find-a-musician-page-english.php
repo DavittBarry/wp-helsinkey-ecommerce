@@ -1,4 +1,7 @@
 <?php
+/**
+ * Template Name: Edit find a musician post
+ */
 $current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
 if ($current_language === 'en') {
     get_header('english');
@@ -57,55 +60,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    echo "<script>alert('Ilmoitus muokattu.'); window.location = '" . get_permalink($post_id_to_edit) . "'; </script>";
+    echo "<script>alert('Post successfully edited.'); window.location = '" . get_permalink($post_id_to_edit) . "'; </script>";
     exit;
 }
 ?>
 
 <div class="container mx-auto mb-12 mt-12 p-4 bg-gray-900 text-white rounded-lg shadow-lg">
-    <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-center">Muokkaa 'Etsi soittajaa' -ilmoitus</h2>
+    <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-center">Edit 'Find a musician' post</h2>
     <form method="post" enctype="multipart/form-data" class="space-y-4 mb-12 text-center">
         <div class="text-center md:w-3/4 mx-auto">
-            <label for="otsikko" class="block text-lg md:text-xl font-medium">Otsikko</label>
+            <label for="otsikko" class="block text-lg md:text-xl font-medium">Title</label>
             <input type="text" id="otsikko" name="otsikko" value="<?php echo esc_attr($post_to_edit->post_title); ?>" class="mt-1 p-2 w-full md:w-3/4 bg-gray-700 text-white border border-gray-600 rounded-md">
         </div>
         <div class="text-center md:w-3/4 mx-auto">
-            <label for="kuvaus" class="block text-lg md:text-xl font-medium">Kuvaus</label>
+            <label for="kuvaus" class="block text-lg md:text-xl font-medium">Description</label>
             <textarea id="kuvaus" name="kuvaus" class="mt-1 h-[300px] p-2 w-full md:w-3/4 bg-gray-700 text-white border border-gray-600 rounded-md"><?php echo esc_textarea(wp_strip_all_tags($post_to_edit->post_content)); ?></textarea>
         </div>
         <div class="text-center">
-            <label for="current_image" class="block text-lg font-medium">Nykyinen Kuva</label>
+            <label for="current_image" class="block text-lg font-medium">Current picture</label>
             <?php if (has_post_thumbnail($post_to_edit->ID)): ?>
                 <a href="<?php echo get_the_post_thumbnail_url($post_to_edit->ID, 'full'); ?>" target="_blank" class="inline-block">
                     <img src="<?php echo get_the_post_thumbnail_url($post_to_edit->ID, 'thumbnail'); ?>" alt="Nykyinen Kuva" class="mx-auto">
                 </a>
             <?php else: ?>
-                <p>Ei nykyistä kuvaa.</p>
+                <p>No current picture.</p>
             <?php endif; ?>
         </div>
         <div class="text-center md:w-3/4 mx-auto">
-            <label for="kuva" class="block text-lg md:text-xl font-medium">Päivitä nykyinen kuva</label>
+            <label for="kuva" class="block text-lg md:text-xl font-medium">Update current picture</label>
             <input type="file" id="kuva" name="kuva" class="mt-1 w-full md:w-3/4 bg-gray-700 text-white border border-gray-600 rounded-md">
         </div>
         <div class="text-center md:w-3/4 mx-auto">
-            <label for="nimi" class="block text-lg md:text-xl font-medium">Nimi</label>
+            <label for="nimi" class="block text-lg md:text-xl font-medium">Name</label>
             <input type="text" id="nimi" name="nimi" value="<?php echo esc_attr(get_field('nimi', $post_to_edit->ID)); ?>" class="mt-1 p-2 w-full md:w-3/4 bg-gray-700 text-white border border-gray-600 rounded-md">
         </div>
         <div class="text-center md:w-3/4 mx-auto">
-            <label for="sahkoposti" class="block text-lg md:text-xl font-medium">Sähköposti</label>
+            <label for="sahkoposti" class="block text-lg md:text-xl font-medium">E-mail</label>
             <input type="email" id="sahkoposti" name="sahkoposti" value="<?php echo esc_attr(get_field('sahkoposti', $post_to_edit->ID)); ?>" class="mt-1 p-2 w-full md:w-3/4 bg-gray-700 text-white border border-gray-600 rounded-md">
         </div>
         <div class="text-center md:w-3/4 mx-auto">
-            <label for="puhelinnumero" class="block text-lg md:text-xl font-medium">Puhelinnumero</label>
+            <label for="puhelinnumero" class="block text-lg md:text-xl font-medium">Phonenumber</label>
             <input type="text" id="puhelinnumero" name="puhelinnumero" value="<?php echo esc_attr(get_field('puhelinnumero', $post_to_edit->ID)); ?>" class="mt-1 p-2 w-full md:w-3/4 bg-gray-700 text-white border border-gray-600 rounded-md">
         </div>
         <div class="text-center md:w-3/4 mx-auto">
-            <input type="submit" value="Muokkaa" class="bg-blue-600 cursor-pointer hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <input type="submit" value="Edit" class="bg-blue-600 cursor-pointer hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         </div>
     </form>
 </div>
 
-<?php 
+<?php
     $current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
     if ($current_language === 'en') {
         get_footer('english');

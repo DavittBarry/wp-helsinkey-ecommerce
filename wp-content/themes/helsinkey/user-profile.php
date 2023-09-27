@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Käyttäjäprofiili
+ * Template Name: User profile
  */
 $current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
     if ($current_language === 'en') {
@@ -28,21 +28,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<div class="container mx-auto mt-12 p-4 bg-gray-900 text-white rounded-lg shadow-lg w-full md:w-3/4 lg:w-3/4">
-    <h2 class="text-2xl font-semibold mb-4 text-center">Käyttäjäprofiili</h2>
+<div class="container mx-auto mb-6 mt-12 p-4 bg-gray-900 text-white rounded-lg shadow-lg w-full md:w-3/4 lg:w-3/4">
+    <h2 class="text-2xl font-semibold mb-4 text-center">User profile</h2>
 
     <div class="flex flex-col md:flex-row justify-center">
         <div class="w-full md:w-3/4 lg:w-1/2">
             <div class="mb-8 text-left">
-                <h3 class="text-xl font-semibold mb-3">Nykyiset tiedot:</h3>
+                <h3 class="text-xl font-semibold mb-3">Current info:</h3>
                 <p class="m-2 mb-5">
-                    <strong class="block mb-1">Etunimi:</strong> <?php echo !empty($current_user->first_name) ? esc_html($current_user->first_name) : 'Ei asetettu'; ?>
+                    <strong class="block mb-1">First name:</strong> <?php echo !empty($current_user->first_name) ? esc_html($current_user->first_name) : 'Ei asetettu'; ?>
                 </p>
                 <p class="m-2 mb-5">
-                    <strong class="block mb-1">Sukunimi:</strong> <?php echo !empty($current_user->last_name) ? esc_html($current_user->last_name) : 'Ei asetettu'; ?>
+                    <strong class="block mb-1">Last name:</strong> <?php echo !empty($current_user->last_name) ? esc_html($current_user->last_name) : 'Ei asetettu'; ?>
                 </p>
                 <p class="m-2">
-                    <strong class="block mb-1">Sähköposti:</strong> <?php echo !empty($current_user->user_email) ? esc_html($current_user->user_email) : 'Ei asetettu'; ?>
+                    <strong class="block mb-1">E-mail:</strong> <?php echo !empty($current_user->user_email) ? esc_html($current_user->user_email) : 'Ei asetettu'; ?>
                 </p>
             </div>
 
@@ -50,36 +50,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="hidden" name="toiminta" value="päivitä-käyttäjä">
                 
                 <div>
-                    <label for="first_name" class="block text-lg font-medium">Etunimi</label>
+                    <label for="first_name" class="block text-lg font-medium">First name</label>
                     <input type="text" id="first_name" name="first_name" value="<?php echo esc_attr($current_user->first_name); ?>" class="mt-1 p-2 w-full bg-gray-700 text-white border border-gray-600 rounded-md">
                 </div>
 
                 <div>
-                    <label for="last_name" class="block text-lg font-medium">Sukunimi</label>
+                    <label for="last_name" class="block text-lg font-medium">Last name</label>
                     <input type="text" id="last_name" name="last_name" value="<?php echo esc_attr($current_user->last_name); ?>" class="mt-1 p-2 w-full bg-gray-700 text-white border border-gray-600 rounded-md">
                 </div>
 
                 <div>
-                    <label for="email" class="block text-lg font-medium">Sähköposti</label>
+                    <label for="email" class="block text-lg font-medium">E-mail</label>
                     <input type="email" id="email" name="email" value="<?php echo esc_attr($current_user->user_email); ?>" class="mt-1 p-2 w-full bg-gray-700 text-white border border-gray-600 rounded-md">
                 </div>
 
                 <div class="text-center">
-                    <input type="submit" value="Päivitä tiedot" class="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <input type="submit" value="Update info" class="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 </div>
             </form>
         </div>
     </div>
 
     <div class="user-posts mt-8">
-        <h3 class="text-xl font-semibold mb-2 text-center">Omat julkaisut:</h3>
+        <h3 class="text-xl font-semibold mb-2 text-center">Your posts:</h3>
         <?php
         $post_types = ['tori', 'etsi_soittajaa', 'post', 'artists', 'events'];
         foreach ($post_types as $type) {
-            if (!current_user_can('administrator') && !in_array($type, ['tori', 'etsi soittajaa'])) {
+            if (!current_user_can('administrator') && !in_array($type, ['tori', 'etsi_soittajaa'])) {
                 continue;
             }
-            echo '<h4 class="text-lg font-bold mb-2 text-center">' . str_replace('_', ' ', ucfirst($type)) . '</h4>';
+            $header_text = str_replace('_', ' ', ucfirst($type));
+            if ($current_language === 'en') {
+                if ($type === 'tori') {
+                    $header_text = 'Marketplace';
+                } elseif ($type === 'etsi_soittajaa') {
+                    $header_text = 'Find a musician';
+                }
+            }
+            echo '<h4 class="text-lg font-bold mb-2 text-center">' . $header_text . '</h4>';
+
             $args = array(
                 'author' => $current_user->ID,
                 'post_type' => $type
@@ -93,12 +102,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="post-content mb-2">
                             <?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?>
                         </div>
-                        <p class="mb-2">Lähetetty: <?php echo get_the_date(); ?></p>
+                        <p class="mb-2">Posted: <?php echo get_the_date(); ?></p>
                         <div>
-                            <a href="<?php the_permalink(); ?>" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">Muokkaa</a>
+                            <a href="<?php the_permalink(); ?>" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block">Edit</a>
                             <form action="" method="post" class="inline-block">
                                 <input type="hidden" name="delete_post_id" value="<?php the_ID(); ?>">
-                                <input type="submit" value="Poista" class="cursor-pointer bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded inline-block" onclick="return confirm('Haluatko varmasti poistaa tämän julkaisun?')">
+                                <input type="submit" value="Delete" class="cursor-pointer bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded inline-block" onclick="return confirm('Are you sure you want to delete this post?')">
                             </form>
                         </div>
                     </div>

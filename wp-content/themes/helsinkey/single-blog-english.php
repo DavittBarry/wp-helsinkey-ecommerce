@@ -1,4 +1,4 @@
-<?php 
+<?php
 $current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
     if ($current_language === 'en') {
         get_header('english');
@@ -9,7 +9,7 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
 
 <div class="container mx-auto px-4 py-6 md:py-20 flex flex-col items-center">
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-        <div class="bg-gray-900 p-4 rounded-lg shadow-lg flex flex-col w-full max-w-3xl">
+        <article class="bg-gray-900 p-4 rounded-lg shadow-lg flex flex-col w-full max-w-3xl">
             <img class="w-full h-48 md:h-56 object-cover mb-4 rounded-t-lg" src="<?php echo get_the_post_thumbnail_url($post, 'my_custom_size'); ?>" alt="<?php the_title(); ?>">
             <h1 class="text-2xl md:text-3xl font-bold mb-2 text-white text-center"><?php the_title(); ?></h1>
             <div class="text-sm text-gray-300 mb-4 text-center">
@@ -18,7 +18,7 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
             <div class="flex-grow text-white prose lg:prose-lg">
                 <?php the_content(); ?>
             </div>
-        </div>
+        </article>
 
         <section class="mt-6 bg-gray-900 p-4 rounded-lg shadow-lg w-full max-w-3xl text-center">
             <div class="mb-4">
@@ -32,17 +32,6 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
         </section>
 
         <style>
-            .flex-grow a {
-                color: #63b3ed;
-                text-decoration: underline;
-                display: block;
-                text-align: center;
-            }
-
-            .flex-grow a:hover {
-                text-decoration: none;
-            }
-
             .comment-respond a, .comment-list a {
                 color: #63b3ed;
                 text-decoration: underline;
@@ -173,7 +162,6 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
             .logged-in-as {
                 margin-top: 8px;
             }
-
             .comment-content::before, .comment-content::after {
                 position: absolute;
                 top: 50%;
@@ -194,7 +182,7 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
         </style>
 
         <div class="mt-6 text-center">
-            <a href="<?php echo get_permalink(261); ?>" class="text-white bg-helsinkey-blue text-md p-4 py-2 rounded-xl transition-colors hover:bg-blue-600">Back to all artists</a>
+            <a href="<?php echo get_permalink(324); ?>" class="text-white bg-helsinkey-blue text-md p-4 py-2 rounded-xl transition-colors hover:bg-blue-600">Back to all blogs</a>
         </div>
 
     <?php endwhile; endif; ?>

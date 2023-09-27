@@ -58,21 +58,21 @@
                 <?php if (is_user_logged_in()): 
                     $current_user = wp_get_current_user();
                 ?>
-                    <a href="<?php echo get_permalink(160); ?>" class="bg-gray-800 rounded p-1 w-full text-center hover:bg-hover-blue transition ease-in-out duration-200">
+                    <a href="<?php echo get_permalink(326); ?>" class="bg-gray-800 rounded p-1 w-full text-center hover:bg-hover-blue transition ease-in-out duration-200">
                         Hello, <?php echo $current_user->display_name; ?>!
                     </a>
                     <div class="border-t border-gray-400 w-full my-1"></div>
-                    <a href="<?php echo wp_logout_url(home_url()); ?>" class="bg-gray-800 rounded p-1 w-full text-center hover:bg-hover-blue transition ease-in-out duration-200">
+                    <a href="<?php echo wp_logout_url(get_permalink(267)); ?>" class="bg-gray-800 rounded p-1 w-full text-center hover:bg-hover-blue transition ease-in-out duration-200">
                         Log out
                     </a>
                 <?php else: ?>
-                    <a href="<?php echo get_permalink(166); ?>" class="bg-gray-800 rounded p-1 w-full text-center hover:bg-hover-blue transition ease-in-out duration-200">Log in</a>
+                    <a href="<?php echo get_permalink(328); ?>" class="bg-gray-800 rounded p-1 w-full text-center hover:bg-hover-blue transition ease-in-out duration-200">Log in</a>
                     <div class="border-t border-gray-400 w-full my-1"></div>
-                    <a href="<?php echo get_permalink(168); ?>" class="bg-gray-800 rounded p-1 w-full text-center hover:bg-hover-blue transition ease-in-out duration-200">Register</a>
+                    <a href="<?php echo get_permalink(330); ?>" class="bg-gray-800 rounded p-1 w-full text-center hover:bg-hover-blue transition ease-in-out duration-200">Register</a>
                 <?php endif; ?>
                 
                 <div class="border-t border-gray-400 w-full my-1"></div>
-                <a href="<?php echo get_permalink(201); ?>" class="bg-gray-800 rounded p-1 w-full text-center hover:bg-hover-blue transition ease-in-out duration-200">
+                <a href="<?php echo get_permalink(333); ?>" class="bg-gray-800 rounded p-1 w-full text-center hover:bg-hover-blue transition ease-in-out duration-200">
                     Shopping Cart
                 </a>
             </div>
@@ -112,24 +112,24 @@
                     $current_user = wp_get_current_user();
                 ?>
                     <div class="flex justify-center items-center text-2xl p-4 w-full">
-                        <a href="<?php echo get_permalink(160); ?>" class="flex-1 bg-gray-700 rounded p-1 text-center hover:bg-hover-blue transition ease-in-out duration-200">
+                        <a href="<?php echo get_permalink(326); ?>" class="flex-1 bg-gray-700 rounded p-1 text-center hover:bg-hover-blue transition ease-in-out duration-200">
                             Hello, <?php echo $current_user->display_name; ?>!
                         </a>
                         <div class="border-l border-gray-400 h-6 mx-2"></div>
-                        <a href="<?php echo wp_logout_url(home_url()); ?>" class="flex-1 bg-gray-700 rounded p-1 text-center hover:bg-hover-blue transition ease-in-out duration-200">
+                        <a href="<?php echo wp_logout_url(get_permalink(267)); ?>" class="flex-1 bg-gray-700 rounded p-1 text-center hover:bg-hover-blue transition ease-in-out duration-200">
                             Log out
                         </a>
                     </div>
                 <?php else: ?>
                     <div class="flex justify-center items-center text-2xl p-4 w-full">
-                        <a href="<?php echo get_permalink(166); ?>" class="flex-1 bg-gray-700 rounded p-1 text-center hover:bg-hover-blue transition ease-in-out duration-200">Log in</a>
+                        <a href="<?php echo get_permalink(328); ?>" class="flex-1 bg-gray-700 rounded p-1 text-center hover:bg-hover-blue transition ease-in-out duration-200">Log in</a>
                         <div class="border-l border-gray-400 h-6 mx-2"></div>
-                        <a href="<?php echo get_permalink(168); ?>" class="flex-1 bg-gray-700 rounded p-1 text-center hover:bg-hover-blue transition ease-in-out duration-200">Register</a>
+                        <a href="<?php echo get_permalink(330); ?>" class="flex-1 bg-gray-700 rounded p-1 text-center hover:bg-hover-blue transition ease-in-out duration-200">Register</a>
                     </div>
                 <?php endif; ?>
                 
                 <div class="flex justify-center items-center text-2xl p-4 w-full">
-                    <a href="<?php echo get_permalink(201); ?>" class="flex-1 bg-gray-700 rounded p-1 text-center hover:bg-hover-blue transition ease-in-out duration-200">
+                    <a href="<?php echo get_permalink(333); ?>" class="flex-1 bg-gray-700 rounded p-1 text-center hover:bg-hover-blue transition ease-in-out duration-200">
                         Shopping Cart
                     </a>
                 </div>

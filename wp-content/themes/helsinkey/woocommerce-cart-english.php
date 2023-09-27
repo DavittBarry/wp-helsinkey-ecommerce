@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Ostoskori
+Template Name: Cart English
 */
 ?>
 
@@ -22,10 +22,10 @@ if (isset($_POST['update_cart'])) {
 
 <div class="container mx-auto px-4 py-6 md:py-20 flex flex-col items-center">
     <div class="bg-gray-900 p-4 rounded-lg shadow-lg w-full max-w-3xl text-white">
-        <h1 class="text-2xl md:text-3xl font-bold mb-2 text-center">Ostoskori</h1>
+        <h1 class="text-2xl md:text-3xl font-bold mb-2 text-center">Cart</h1>
         <?php
         if ( WC()->cart->is_empty() ) {
-            echo '<p class="mt-6 text-center">Ostoskori on tyhjä.</p>';
+            echo '<p class="mt-6 text-center">The cart is empty.</p>';
         } else {
             ?>
             <form class="woocommerce-cart-form" action="<?php echo get_permalink(201); ?>" method="post">
@@ -33,12 +33,12 @@ if (isset($_POST['update_cart'])) {
                     <table class="shop_table min-w-full text-center">
                         <thead>
                             <tr>
-                                <th>Poista</th>
-                                <th>Kuva</th>
-                                <th>Tuote</th>
-                                <th>Hinta</th>
-                                <th>Määrä</th>
-                                <th>Välisumma</th>
+                                <th>Delete</th>
+                                <th>Picture</th>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Amount</th>
+                                <th>Subtotal</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -102,15 +102,15 @@ if (isset($_POST['update_cart'])) {
                     </table>
                 </div>
                 <div class="flex justify-center mt-4">
-                    <input type="submit" id="update_cart_button" name="update_cart" class="custom-button" value="Päivitä ostoskori" disabled>
+                    <input type="submit" id="update_cart_button" name="update_cart" class="custom-button" value="Update cart" disabled>
                 </div>
                 <?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
             </form>
             <div class="cart_totals">
-                <h2>Yhteensä</h2>
+                <h2>Total</h2>
                 <p>Subtotal: <?php echo WC()->cart->get_cart_subtotal(); ?></p>
                 <p>Total: <?php echo WC()->cart->get_cart_total(); ?></p>
-                <a href="<?php echo wc_get_checkout_url(); ?>" class="mt-6 checkout-button custom-button">Siirry kassalle</a>
+                <a href="<?php echo get_permalink(335); ?>" class="mt-6 checkout-button custom-button">Proceed to checkout</a>
             </div>
             <?php
         }

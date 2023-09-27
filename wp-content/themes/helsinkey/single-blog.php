@@ -20,7 +20,6 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
             </div>
         </article>
 
-        <!-- Comments Section -->
         <section class="mt-6 bg-gray-900 p-4 rounded-lg shadow-lg w-full max-w-3xl text-center">
             <div class="mb-4">
                 <h2 class="text-xl font-bold text-white mb-2">Kommentit</h2>
@@ -33,7 +32,6 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
         </section>
 
         <style>
-            /* Custom styles for comment section links */
             .comment-respond a, .comment-list a {
                 color: #63b3ed;
                 text-decoration: underline;
@@ -43,13 +41,11 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
                 text-decoration: none;
             }
 
-            /* Comment list styles */
             .comment-list {
                 list-style: none;
                 padding-left: 0;
             }
 
-            /* Style to put the avatar and metadata inline */
             .comment-author .avatar, .comment-author, .comment-metadata {
                 display: inline-block;
                 vertical-align: middle;
@@ -67,7 +63,6 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
                 color: #aaaaaa;
             }
 
-            /* Comment reply link styling */
             .comment-reply-link {
                 background: #63b3ed;
                 color: white;
@@ -85,7 +80,6 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
                 content: none;
             }
 
-            /* Comment form styles */
             .comment-form label {
                 color: #ffffff;
             }
@@ -110,12 +104,10 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
                 background-color: #4a90e2;
             }
 
-            /* Hide default checkbox */
             input#wp-comment-cookies-consent {
                 display: none;
             }
 
-            /* Custom checkbox design */
             input#wp-comment-cookies-consent + label {
                 position: relative;
                 padding-left: 30px;
@@ -134,7 +126,6 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
                 border-radius: 3px;
             }
 
-            /* Show a checkmark when checked */
             input#wp-comment-cookies-consent:checked + label:after {
                 content: "";
                 position: absolute;
@@ -151,7 +142,6 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
                 display: none;
             }
 
-            /* Comment box  */
             .comment-content {
                 display: inline-block;
                 max-width: 100%;
@@ -191,7 +181,6 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
             }
         </style>
 
-        <!-- Back to All Blogs -->
         <div class="mt-6 text-center">
             <a href="<?php echo get_permalink(117); ?>" class="text-white bg-helsinkey-blue text-md p-4 py-2 rounded-xl transition-colors hover:bg-blue-600">Takaisin kaikkiin blogeihin</a>
         </div>
@@ -199,4 +188,11 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
     <?php endwhile; endif; ?>
 </div>
 
-<?php get_footer(); ?>
+<?php
+    $current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
+    if ($current_language === 'en') {
+        get_footer('english');
+    } else {
+        get_footer();
+    }
+?>

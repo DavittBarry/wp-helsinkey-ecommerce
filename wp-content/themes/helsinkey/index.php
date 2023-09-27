@@ -39,4 +39,11 @@
     ?>
 </div>
 
-<?php get_footer(); ?>
+<?php
+    $current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
+    if ($current_language === 'en') {
+        get_footer('english');
+    } else {
+        get_footer();
+    }
+?>

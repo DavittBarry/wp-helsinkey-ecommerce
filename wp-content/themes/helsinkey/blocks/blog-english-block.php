@@ -1,7 +1,7 @@
 <!-- Blog or News Section -->
 <div class="blog-section py-6 md:py-12">
     <div class="container mx-auto">
-        <h2 class="text-2xl md:text-3xl font-semibold mb-4 md:mb-6 text-center">Latest blog posts</h2>
+        <h2 class="text-2xl md:text-3xl font-semibold mb-4 md:mb-6 text-center">Latest Blog Posts</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             <?php 
             $args = array(
@@ -40,12 +40,12 @@
         </div>
         <?php if ($total_posts > 2): ?>
             <div class="mt-12 text-center lg:hidden xl:hidden 2xl:hidden">
-                <a href="<?php echo get_permalink(117); ?>" class="text-white bg-helsinkey-blue text-md md:text-md p-4 md:p-4 py-2 rounded-xl transition-colors hover:bg-blue-600">Read all blogs</a>
+                <a href="<?php echo get_permalink(324); ?>" class="text-white bg-helsinkey-blue text-md md:text-md p-4 md:p-4 py-2 rounded-xl transition-colors hover:bg-blue-600">Read all blogs</a>
             </div>
         <?php endif; ?>
         <?php if ($total_posts > 3): ?>
             <div class="mt-12 text-center hidden lg:block xl:block 2xl:block">
-                <a href="<?php echo get_permalink(117); ?>" class="text-white bg-helsinkey-blue text-md md:text-md p-4 md:p-4 py-2 rounded-xl transition-colors hover:bg-blue-600">Read all blogs</a>
+                <a href="<?php echo get_permalink(324); ?>" class="text-white bg-helsinkey-blue text-md md:text-md p-4 md:p-4 py-2 rounded-xl transition-colors hover:bg-blue-600">Read all blogs</a>
             </div>
         <?php endif; ?>
     </div>

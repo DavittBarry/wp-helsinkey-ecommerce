@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Tori
+ * Template Name: Marketplace English
  */
 $current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
     if ($current_language === 'en') {
@@ -13,21 +13,21 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
 <div class="container mx-auto mt-3 md:mt-3">
     <div class="tori-section py-6 md:py-6">
         <h2 class="text-2xl md:text-3xl font-semibold mb-4 md:mb-6 text-center">
-            Tori
+            Marketplace
         </h2>
 
         <p class="mb-4 md:mb-6 text-center">
-            Myy käytettyjä musatavaroita
+            Sell used musical goods
         </p>
 
         <div class="text-center mb-8">
             <?php if (is_user_logged_in()) : ?>
                 <button id="newToriPost" class="bg-helsinkey-blue hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                    Lisää uusi ilmoitus
+                    Post a new advertisement
                 </button>
             <?php else : ?>
-                <a href="<?php echo get_permalink(166); ?>" class="bg-helsinkey-blue hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                    Lisää uusi ilmoitus
+                <a href="<?php echo get_permalink(6986); ?>" class="bg-helsinkey-blue hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                    Post a new advertisement
                 </a>
             <?php endif; ?>
         </div>
@@ -68,7 +68,7 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
                             <span style="vertical-align: middle;">€</span> <?php echo $hinta; ?>
                         </p>
                         <a href="<?php the_permalink(); ?>" class="text-white bg-helsinkey-blue text-xs md:text-sm ml-6 mt-6 px-2 md:px-4 py-2 rounded-xl transition-colors hover:bg-blue-600">
-                            Näytä ilmoitus
+                            Show ad
                         </a>
                     </div>
                 </div>
@@ -86,7 +86,7 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
         <?php if (is_user_logged_in()) : ?>
             const newToriPostBtn = document.getElementById('newToriPost');
             newToriPostBtn.addEventListener('click', function() {
-                window.location.href = "<?php echo get_permalink(192); ?>";
+                window.location.href = "<?php echo get_permalink(6986); ?>";
             });
         <?php endif; ?>
     });

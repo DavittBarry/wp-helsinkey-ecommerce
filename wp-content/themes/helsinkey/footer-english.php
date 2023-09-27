@@ -23,15 +23,15 @@
                 ?>
             </nav>
             <div class="text-center w-full text-base md:text-sm lg:text-base mb-4">
-                <h3 class="font-bold mb-2">Sivukartta</h3>
-                <a href="/?page_id=8" class="rounded p-1 hover:bg-hover-blue transition ease-in-out duration-200">Musakauppa</a>
-                <a href="/?page_id=10" class="rounded p-1 hover:bg-hover-blue transition ease-in-out duration-200">Soittimet</a>
-                <a href="/?page_id=11" class="rounded p-1 hover:bg-hover-blue transition ease-in-out duration-200">Tori</a>
-                <a href="/?page_id=12" class="rounded p-1 hover:bg-hover-blue transition ease-in-out duration-200">Etsi soittajaa</a>
-                <a href="/?page_id=117" class="rounded p-1 hover:bg-hover-blue transition ease-in-out duration-200">Blogit</a>
-                <a href="/?page_id=151" class="rounded p-1 hover:bg-hover-blue transition ease-in-out duration-200">Tapahtumat</a>
-                <a href="/?page_id=160" class="rounded p-1 hover:bg-hover-blue transition ease-in-out duration-200">Käyttäjäprofiili</a>
-                <a href="/?page_id=201" class="rounded p-1 hover:bg-hover-blue transition ease-in-out duration-200">Ostoskori</a>
+                <h3 class="font-bold mb-2">Site map</h3>
+                <a href="/?page_id=261" class="rounded p-1 hover:bg-hover-blue transition ease-in-out duration-200">Music</a>
+                <a href="/?page_id=264" class="rounded p-1 hover:bg-hover-blue transition ease-in-out duration-200">Instruments</a>
+                <a href="/?page_id=337" class="rounded p-1 hover:bg-hover-blue transition ease-in-out duration-200">Market</a>
+                <a href="/?page_id=6990" class="rounded p-1 hover:bg-hover-blue transition ease-in-out duration-200">Find musician</a>
+                <a href="/?page_id=324" class="rounded p-1 hover:bg-hover-blue transition ease-in-out duration-200">Blogs</a>
+                <a href="/?page_id=322" class="rounded p-1 hover:bg-hover-blue transition ease-in-out duration-200">Events</a>
+                <a href="/?page_id=326" class="rounded p-1 hover:bg-hover-blue transition ease-in-out duration-200">User profile</a>
+                <a href="/?page_id=333" class="rounded p-1 hover:bg-hover-blue transition ease-in-out duration-200">Cart</a>
             </div>
             <div class="text-center w-full text-base md:text-sm lg:text-base">
                 &copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>

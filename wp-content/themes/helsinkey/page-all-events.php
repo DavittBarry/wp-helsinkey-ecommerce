@@ -27,7 +27,7 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
                     $all_events_query->the_post(); ?>
                     <div class="event-item bg-gray-900 p-2 md:p-4 rounded shadow-lg flex flex-col">
                         <!-- Event Thumbnail -->
-                        <img class="w-full h-36 md:h-48 object-cover mb-2 md:mb-4 rounded" src="<?php echo get_the_post_thumbnail_url($post, array(600, 400)); ?>" alt="<?php the_title(); ?>">
+                        <img class="w-full h-36 md:h-48 object-cover mb-2 md:mb-4 rounded" src="<?php echo get_the_post_thumbnail_url($post, 'my_custom_size'); ?>" alt="<?php the_title(); ?>">
                         
                         <!-- Event Title -->
                         <a href="<?php the_permalink(); ?>">
@@ -58,4 +58,11 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
     </div>
 </div>
 
-<?php get_footer(); ?>
+<?php
+    $current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
+    if ($current_language === 'en') {
+        get_footer('english');
+    } else {
+        get_footer();
+    }
+?>

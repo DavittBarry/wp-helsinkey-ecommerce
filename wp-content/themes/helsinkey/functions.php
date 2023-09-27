@@ -261,6 +261,41 @@ function load_language_specific_single_event_template($template) {
     return $template;
 }
 
+function load_english_marketplace_single_template() {
+    global $wp_query;
+
+    $current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
+
+    if (is_single() && get_post_type() === 'tori' && $current_language === 'en') {
+        $new_template_path = get_template_directory() . '/single-marketplace-english.php';
+
+        if (file_exists($new_template_path)) {
+            $wp_query->is_404 = false;
+            $wp_query->is_single = true;
+            $wp_query->is_page = false;
+            include($new_template_path);
+            exit;
+        }
+    }
+}
+add_action('template_redirect', 'load_english_marketplace_single_template');
+
+add_filter('template_include', 'load_language_specific_single_blog_template');
+
+function load_language_specific_single_blog_template($template) {
+    if (is_singular('post')) {
+        $current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
+        
+        if ($current_language === 'en') {
+            $new_template = locate_template(array('single-blog-english.php'));
+            if ('' != $new_template) {
+                return $new_template;
+            }
+        }
+    }
+    return $template;
+}
+
 add_action('wp_enqueue_scripts', 'Helsinkey_Add_Google_Fonts');
 
 function load_single_template($template) {
@@ -278,6 +313,22 @@ function load_single_template($template) {
 }
 
 add_filter('single_template', 'load_single_template');
+
+function load_single_find_a_musician_template($template) {
+    global $post;
+
+    if ($post->post_type === 'etsi_soittajaa') {
+        $new_template_path = get_template_directory() . '/single-find-a-musician-page-english.php';
+
+        if (file_exists($new_template_path)) {
+            return $new_template_path;
+        }
+    }
+    return $template;
+}
+
+add_filter('single_template', 'load_single_find_a_musician_template');
+
 
 function create_etsi_soittajaa_post_type() {
     register_post_type('etsi_soittajaa',
@@ -301,14 +352,18 @@ function add_my_custom_post_type_translation($post_types, $is_settings) {
         unset($post_types['events']);
         unset($post_types['artists']);
         unset($post_types['product']);
+        unset($post_types['tori']);
+        unset($post_types['etsi_soittajaa']);
     } else {
         $post_types['events'] = 'events';
         $post_types['artists'] = 'artists';
         $post_types['product'] = 'product';
+        $post_types['tori'] = 'tori';
+        $post_types['etsi_soittajaa'] = 'etsi_soittajaa';
+        
     }
     return $post_types;
 }
-
 
 function create_tori_post_type() {
     register_post_type('tori',
@@ -367,3 +422,4 @@ function create_artists_post_type() {
 }
 
 add_action('init', 'create_artists_post_type');
+

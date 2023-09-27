@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Rekisteröidy
+ * Template Name: Register
  */
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -27,7 +27,7 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
 ?>
 
 <div class="container mx-auto mt-12 p-4 mb-6 bg-gray-900 text-white rounded-lg shadow-lg flex flex-col items-center">
-    <h2 class="text-2xl font-semibold mb-4 text-center">Rekisteröidy</h2>
+    <h2 class="text-2xl font-semibold mb-4 text-center">Register</h2>
 
     <?php if (isset($virheviesti) && !empty($virheviesti)) : ?>
         <div class="bg-red-600 p-2 rounded-lg mb-4 w-1/2 text-center">
@@ -37,22 +37,22 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
 
     <form action="" method="post" class="space-y-4 w-1/2">
         <div>
-            <label for="kayttajanimi" class="block text-lg font-medium">Käyttäjänimi</label>
+            <label for="kayttajanimi" class="block text-lg font-medium">Username</label>
             <input type="text" id="kayttajanimi" name="kayttajanimi" required class="mt-1 p-2 w-full bg-gray-700 text-white border border-gray-600 rounded-md">
         </div>
 
         <div>
-            <label for="sahkoposti" class="block text-lg font-medium">Sähköposti</label>
+            <label for="sahkoposti" class="block text-lg font-medium">E-mail</label>
             <input type="email" id="sahkoposti" name="sahkoposti" required class="mt-1 p-2 w-full bg-gray-700 text-white border border-gray-600 rounded-md">
         </div>
 
         <div>
-            <label for="salasana" class="block text-lg font-medium">Salasana</label>
+            <label for="salasana" class="block text-lg font-medium">Password</label>
             <input type="password" id="salasana" name="salasana" required class="mt-1 p-2 w-full bg-gray-700 text-white border border-gray-600 rounded-md">
         </div>
 
         <div class="text-center">
-            <input type="submit" value="Rekisteröidy" class="bg-blue-600 cursor-pointer  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <input type="submit" value="Register" class="bg-blue-600 cursor-pointer  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         </div>
     </form>
 </div>

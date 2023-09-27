@@ -24,9 +24,9 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
                     if (is_user_logged_in() && $current_user->ID === get_the_author_meta('ID')) {
                 ?>
                     <div class="mt-6 mb-6 text-center">
-                        <a href="<?php echo add_query_arg(['page_id' => 238, 'post_id' => get_the_ID()], home_url()); ?>"
+                        <a href="<?php echo add_query_arg(['page_id' => 7000, 'post_id' => get_the_ID()], home_url()); ?>"
                             class="text-white bg-green-600 text-md p-4 py-2 rounded-xl transition-colors hover:bg-green-700">
-                            Muokkaa
+                            Edit
                         </a>
                     </div>
                 <?php } ?>
@@ -42,11 +42,11 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
                 <div class="mt-4 text-white text-center">
                     <ul>
                         <li class="mt-2">
-                            <strong>Nimi:</strong>
+                            <strong>Name:</strong>
                             <p class="ml-2 mt-1"><?php the_field('nimi'); ?></p>
                         </li>
                         <li class="mt-2">
-                            <strong>Sähköposti:</strong>
+                            <strong>E-mail:</strong>
                             <p class="ml-2 mt-1">
                                 <a href="mailto:<?php the_field('sahkoposti'); ?>" class="text-white mt-2">
                                     <?php the_field('sahkoposti'); ?>
@@ -54,7 +54,7 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
                             </p>
                         </li>
                         <li class="mt-2">
-                            <strong>Puhelinnumero:</strong>
+                            <strong>Phonenumber:</strong>
                             <p class="ml-2">
                                 <a href="tel:<?php the_field('puhelinnumero'); ?>" class="text-white">
                                     <?php the_field('puhelinnumero'); ?>
@@ -66,7 +66,7 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
             </article>
 
             <div class="mt-6 text-center">
-                <a href="<?php echo get_permalink(12); ?>" class="text-white bg-helsinkey-blue text-md p-4 py-2 rounded-xl transition-colors hover:bg-blue-600">Takaisin kaikkiin ilmoituksiin</a>
+                <a href="<?php echo get_permalink(6990); ?>" class="text-white bg-helsinkey-blue text-md p-4 py-2 rounded-xl transition-colors hover:bg-blue-600">Back to all ads</a>
             </div>
 
         <?php endwhile; endif; ?>
