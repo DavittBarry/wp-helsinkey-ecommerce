@@ -1,4 +1,11 @@
-<?php get_header(); ?>
+<?php
+$current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
+    if ($current_language === 'en') {
+        get_header('english');
+    } else {
+        get_header();
+    }
+?>
 
 <div class="container mx-auto px-4 py-6 md:py-20 flex flex-col items-center">
     <div class="bg-gray-900 p-4 rounded-lg shadow-lg flex flex-col w-full max-w-3xl">

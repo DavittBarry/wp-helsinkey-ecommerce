@@ -9,6 +9,15 @@
         defer
     ></script>
     <style>
+        .lang-item {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Customize the flag image */
+        .lang-item img {
+            vertical-align: middle;  /* Align with the middle of the line */
+        }
         @media (min-width: 1024px) {
             .header-menu-container .rounded {
                 font-size: 1.5rem;
@@ -38,8 +47,8 @@
                         'theme_location' => 'header-menu',
                         'container_class' => 'header-menu-container',
                         'menu_class' => 'flex',
-                        'link_before' => '<div class="rounded hover:bg-hover-blue  text-base transition ease-in-out duration-200">| ',
-                        'link_after' => ' |</div>'
+                        'link_before' => '<div class="rounded hover:bg-hover-blue  text-base transition ease-in-out duration-200">',
+                        'link_after' => '</div>'
                     ]
                 ); 
                 ?>

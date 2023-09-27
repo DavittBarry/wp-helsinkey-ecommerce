@@ -1,4 +1,9 @@
 # BEGIN WordPress
 # Rivit, jotka ovat "BEGIN WordPress" ja "END WordPress" välissä on luotu dynaamisesti ja niitä tulee muokata vain WordPressin filttereillä. Kaikki manuaaliset muutokset riveihin tullaan yliajamaan.
 
+php_value upload_max_filesize 64M
+php_value post_max_size 64M
+php_value max_execution_time 300
+php_value max_input_time 300
+
 # END WordPress

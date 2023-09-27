@@ -2,7 +2,13 @@
 /*
 Template Name: All Events Page
 */
-get_header(); ?>
+$current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
+    if ($current_language === 'en') {
+        get_header('english');
+    } else {
+        get_header();
+    }
+?>
 
 <!-- All Events Page -->
 <div class="events-section py-6 md:py-12">

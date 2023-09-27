@@ -1,4 +1,11 @@
-<?php get_header(); ?>
+<?php
+$current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
+    if ($current_language === 'en') {
+        get_header('english');
+    } else {
+        get_header();
+    }
+?>
 
 <div class="container mx-auto px-4 py-6 md:py-20 flex flex-col items-center">
     <div class="bg-gray-900 p-4 rounded-lg shadow-lg flex flex-col w-full max-w-3xl">
@@ -50,6 +57,17 @@
                     background-color: #2563EB !important;
                 }
 
+                #product-73 > section > ul > li > a.woocommerce-LoopProduct-link.woocommerce-loop-product__link > h2 {
+                    color: white;
+                }
+
+                woocommerce-loop-product__title {
+                    color: white;
+                }
+
+                #product-73 > section > h2 {
+                    color: white;
+                }
                 .product_meta {
                     display: none !important;
                 }
@@ -78,5 +96,47 @@
         <?php endwhile; endif; ?>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var elements = document.getElementsByClassName("related products");
+        for (var i = 0; i < elements.length; i++) {
+            var h2Elements = elements[i].getElementsByTagName('h2');
+            for (var j = 0; j < h2Elements.length; j++) {
+                if (h2Elements[j].innerText === "Related products") {
+                    h2Elements[j].innerText = "Liittyvät tuotteet";
+                    h2Elements[j].style.color = "white";
+                }
+            }
+        }
+        var productTitles = document.getElementsByClassName("woocommerce-loop-product__title");
+        for (var i = 0; i < productTitles.length; i++) {
+            productTitles[i].style.color = "white";
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var buttons = document.querySelectorAll('.button.product_type_simple.add_to_cart_button.ajax_add_to_cart');
+        buttons.forEach(function(button) {
+            if (button.textContent.trim() === "Add to cart") {
+                button.textContent = "Lisää ostoskoriin";
+            }
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var descriptionTabs = document.querySelectorAll('.woocommerce-Tabs-panel.woocommerce-Tabs-panel--description.panel.entry-content.wc-tab');
+        descriptionTabs.forEach(function(tab) {
+            var headerElements = tab.querySelectorAll('h1, h2, h3, h4, h5, h6');
+            headerElements.forEach(function(header) {
+                if (header.textContent.trim() === "Description") {
+                    header.textContent = "Kuvaus";
+                    header.style.color = "white";
+                }
+            });
+        });
+    });
+
+</script>
 
 <?php get_footer(); ?>

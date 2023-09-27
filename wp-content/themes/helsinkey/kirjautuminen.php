@@ -22,7 +22,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-get_header(); 
+$current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
+    if ($current_language === 'en') {
+        get_header('english');
+    } else {
+        get_header();
+    }
 ?>
 
 <div class="container mx-auto mt-12 p-4 mb-6 bg-gray-900 text-white rounded-lg shadow-lg flex flex-col items-center">

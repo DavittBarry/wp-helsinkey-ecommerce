@@ -2,7 +2,13 @@
 /*
 Template Name: All Blogs Page
 */
-get_header(); ?>
+$current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
+    if ($current_language === 'en') {
+        get_header('english');
+    } else {
+        get_header();
+    }
+?>
 
 <!-- All Blogs Page -->
 <div class="blog-section py-6 md:py-12">

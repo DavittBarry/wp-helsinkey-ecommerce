@@ -4,7 +4,14 @@ Template Name: Ostoskori
 */
 ?>
 
-<?php get_header(); ?>
+<?php
+$current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
+    if ($current_language === 'en') {
+        get_header('english');
+    } else {
+        get_header();
+    }
+?>
 
 <?php
 if (isset($_POST['update_cart'])) {

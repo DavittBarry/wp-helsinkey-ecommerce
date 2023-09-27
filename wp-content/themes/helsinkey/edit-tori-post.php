@@ -2,7 +2,12 @@
 /**
  * Template Name: Edit tori post
  */
-get_header();
+$current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
+if ($current_language === 'en') {
+    get_header('english');
+} else {
+    get_header();
+}
 
 if (!is_user_logged_in()) {
     wp_redirect(get_permalink(166));

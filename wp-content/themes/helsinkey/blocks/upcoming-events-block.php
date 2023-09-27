@@ -22,7 +22,7 @@
                             <img class="w-full h-36 md:h-48 object-cover rounded" src="<?php echo get_the_post_thumbnail_url($post, 'my_custom_size'); ?>" alt="<?php the_title(); ?>">
                             
                             <a href="<?php the_permalink(); ?>">
-                                <h3 class="text-lg md:text-xl font-bold text-white text-center"><?php the_title(); ?></h3>
+                                <h3 class="text-lg md:text-xl mt-4 font-bold text-white text-center"><?php the_title(); ?></h3>
                             </a>
                             
                             <div class="flex-grow">

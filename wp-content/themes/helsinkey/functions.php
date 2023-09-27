@@ -12,6 +12,31 @@
  * @requires PHP 8.1
  */
 
+add_filter('pll_the_language_link', function($url, $slug) {
+    if ($slug === 'en') {
+        // Append 'page_id=267' to the English URL
+        $url = add_query_arg('page_id', '267', $url);
+    }
+    return $url;
+}, 10, 2);
+
+function disable_plugin_deactivation( $actions, $plugin_file, $plugin_data, $context ) {
+    unset( $actions['edit'] );
+    unset( $actions['deactivate'] );
+    unset( $actions['delete'] );
+    return $actions;
+}
+add_filter( 'plugin_action_links', 'disable_plugin_deactivation', 10, 4 );
+
+
+function disable_plugin_activation() {
+    if ( is_admin() && !defined('DOING_AJAX') ) {
+        wp_die('Plugin activation is disabled.');
+    }
+}
+add_action( 'activate_plugin', 'disable_plugin_activation' );
+
+
 require_once get_template_directory() . '/class-wp-tailwind-navwalker.php';
 
 /**
@@ -188,6 +213,54 @@ function Helsinkey_Add_Google_fonts()
     wp_enqueue_style('google-fonts');
 }
 
+add_filter('template_include', 'load_language_specific_single_product_template');
+
+function load_language_specific_single_product_template($template) {
+    if (is_product()) {
+        $current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
+        
+        if ($current_language === 'en') {
+            $new_template = locate_template(array('single-product-english.php'));
+            if ('' != $new_template) {
+                return $new_template;
+            }
+        }
+    }
+    return $template;
+}
+
+add_filter('template_include', 'load_language_specific_single_artist_template');
+
+function load_language_specific_single_artist_template($template) {
+    if (is_singular('artists')) {
+        $current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
+        
+        if ($current_language === 'en') {
+            $new_template = locate_template(array('single-artists-english.php'));
+            if ('' != $new_template) {
+                return $new_template;
+            }
+        }
+    }
+    return $template;
+}
+
+add_filter('template_include', 'load_language_specific_single_event_template');
+
+function load_language_specific_single_event_template($template) {
+    if (is_singular('events')) {
+        $current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
+        
+        if ($current_language === 'en') {
+            $new_template = locate_template(array('single-events-english.php'));
+            if ('' != $new_template) {
+                return $new_template;
+            }
+        }
+    }
+    return $template;
+}
+
 add_action('wp_enqueue_scripts', 'Helsinkey_Add_Google_Fonts');
 
 function load_single_template($template) {
@@ -220,6 +293,22 @@ function create_etsi_soittajaa_post_type() {
     );
 }
 add_action('init', 'create_etsi_soittajaa_post_type');
+
+add_filter('pll_get_post_types', 'add_my_custom_post_type_translation', 10, 2);
+
+function add_my_custom_post_type_translation($post_types, $is_settings) {
+    if ($is_settings) {
+        unset($post_types['events']);
+        unset($post_types['artists']);
+        unset($post_types['product']);
+    } else {
+        $post_types['events'] = 'events';
+        $post_types['artists'] = 'artists';
+        $post_types['product'] = 'product';
+    }
+    return $post_types;
+}
+
 
 function create_tori_post_type() {
     register_post_type('tori',

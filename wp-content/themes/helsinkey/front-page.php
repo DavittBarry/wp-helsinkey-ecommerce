@@ -1,7 +1,7 @@
 <?php
 // phpcs:ignoreFile PEAR.Commenting.FileComment.MissingVersion
 /**
- * Template Name: Front Page
+ * Template Name: Front page
  * 
  * @category WordPress
  * @package  Helsinkey
@@ -11,7 +11,12 @@
  * @requires PHP 8.1
  */
 
-get_header(); 
+$current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
+    if ($current_language === 'en') {
+        get_header('english');
+    } else {
+        get_header();
+    }
 ?>
 
 <?php get_template_part('blocks/hero-block'); ?>
@@ -19,8 +24,8 @@ get_header();
 <?php get_template_part('blocks/about-block'); ?>
 <?php get_template_part('blocks/blog-block'); ?>
 <?php get_template_part('blocks/upcoming-events-block'); ?>
-<?php get_template_part('blocks/featured-artists'); ?>
-<?php get_template_part('blocks/social-media'); ?>
+<?php get_template_part('blocks/featured-artists-block'); ?>
+<?php get_template_part('blocks/social-media-block'); ?>
 <?php get_template_part('blocks/contact-block'); ?>
 
 <?php

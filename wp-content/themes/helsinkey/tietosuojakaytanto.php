@@ -1,7 +1,13 @@
 <?php
 /* Template Name: Tietosuojakäytäntö */
 
-get_header(); ?>
+$current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
+    if ($current_language === 'en') {
+        get_header('english');
+    } else {
+        get_header();
+    }
+?>
 
 <div class="container mx-auto px-4 py-8">
     <h1 class="text-3xl mt-6 font-semibold mb-4 text-center">Tietosuojakäytäntö</h1>
