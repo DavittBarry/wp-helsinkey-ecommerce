@@ -72,10 +72,6 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
                     display: none !important;
                 }
 
-                body > div.container.mx-auto.px-4.py-6.md\:py-20.flex.flex-col.items-center > div > article > div > div > div > div.woocommerce-notices-wrapper > div {
-                    display: none !important;
-                }
-
                 #product-78 > div.woocommerce-tabs.wc-tabs-wrapper > ul {
                     display: none !important;
                 }
