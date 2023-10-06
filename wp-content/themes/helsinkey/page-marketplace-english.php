@@ -26,7 +26,7 @@ $current_language = function_exists('pll_current_language') ? pll_current_langua
                     Post a new advertisement
                 </button>
             <?php else : ?>
-                <a href="<?php echo get_permalink(6986); ?>" class="bg-helsinkey-blue hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                <a href="<?php echo get_permalink(328); ?>" class="bg-helsinkey-blue hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
                     Post a new advertisement
                 </a>
             <?php endif; ?>
