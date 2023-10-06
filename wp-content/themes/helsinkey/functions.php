@@ -356,13 +356,7 @@ function load_single_find_a_musician_template($template)
     global $post;
 
     if ($post->post_type === 'etsi_soittajaa') {
-        $current_language = function_exists('pll_current_language') ? pll_current_language() : 'default';
-        
-        if ($current_language === 'en') {
-            $new_template_path = get_template_directory() . '/single-find-a-musician-page-english.php';
-        } else {
-            $new_template_path = get_template_directory() . '/single-etsi_soittajaa.php';
-        }
+        $new_template_path = get_template_directory() . '/single-find-a-musician-page-english.php';
 
         if (file_exists($new_template_path)) {
             return $new_template_path;
