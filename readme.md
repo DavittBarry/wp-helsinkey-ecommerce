@@ -21,7 +21,7 @@
 
 ## About this project
 
-The Helsinkey e-commerce music store is designed to provide a seamless shopping experience for music lovers and musicians. The platform offers a wide range of products, from digital music tracks to musical instruments.
+The Helsinkey e-commerce music store is designed to provide a seamless shopping experience for music lovers and musicians. The platform offers a wide range of products, from digital music tracks to musical instruments. It is made on a theme built from scratch.
 
 For more about my work, visit my portfolio: [Davitt Portfolio](https://davittportfolio.com/)
 
